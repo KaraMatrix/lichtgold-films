@@ -153,6 +153,10 @@ content:
             label: "Ziel-Link"
             type: string
             required: true
+          - name: bild
+            label: "Bild"
+            type: image
+            required: true
       - name: ueber_mich
         label: "Über mich (Kurzfassung für die Startseite)"
         type: object
@@ -166,7 +170,7 @@ content:
             type: text
             required: true
           - name: stats
-            label: "Kennzahlen (4 Kacheln)"
+            label: "Kennzahlen (6 Kacheln)"
             type: object
             list: true
             fields:
@@ -322,7 +326,7 @@ content:
             type: image
             required: true
       - name: kategorien
-        label: "Event-Kategorien (6 Karten)"
+        label: "Event-Kategorien (5 Karten)"
         type: object
         list: true
         fields:

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Platzhalter Bild Events">
+<defs><linearGradient id="g" gradientTransform="rotate(25)" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#2a2118"/><stop offset="40%" stop-color="#5c452c"/><stop offset="70%" stop-color="#8a6a3f"/><stop offset="100%" stop-color="#c9a84c"/></linearGradient></defs>
+<rect width="800" height="600" fill="url(#g)"/>
+</svg>

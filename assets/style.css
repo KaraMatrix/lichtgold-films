@@ -391,6 +391,9 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
 .footer-col address { font-style: normal; font-size: 0.85rem; line-height: 1.8; }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
 .footer-copy { font-size: 0.78rem; }
+.footer-copy a { color: var(--text-light); transition: color var(--transition); }
+.footer-copy a:hover { color: var(--gold); }
+.footer-mehr-dazu { display: inline-block; margin-top: 16px; font-size: 0.72rem; letter-spacing: 0.1em; font-weight: 500; color: var(--gold); }
 
 /* ===== SCROLL-REVEAL =====
    Das Basis-Template nutzt hier normalerweise eine "Blenden-Iris" (clip-path: circle()).
@@ -409,21 +412,31 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
    STARTSEITE (hell) — Kategorien-Grid, Ueber-mich-Split, Film-Galerie, CTA
    ====================================================================== */
 .kat-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--cream-dark); border-radius: var(--radius-card); overflow: hidden; }
-.kat-card { padding: clamp(28px, 4vw, 48px) clamp(24px, 3vw, 36px); border-right: 1px solid var(--cream-dark); transition: background var(--transition); }
-.kat-card:last-child { border-right: none; }
-.kat-card:hover { background: var(--cream-dark); }
+/* Scoped auf .kat-grid .kat-card (Startseite) - die gleiche .kat-card-Klasse wird auf
+   Events (.kat-cards-grid .kat-card, dunkles Theme) wiederverwendet und darf davon
+   NICHT betroffen sein (sonst brechen Icon/Titel/Text dort in eine Flex-Reihe um). */
+.kat-grid .kat-card { position: relative; min-height: 340px; display: flex; border-right: 1px solid var(--cream-dark); overflow: hidden; }
+.kat-grid .kat-card:last-child { border-right: none; }
+.kat-card__bg { position: absolute; inset: 0; z-index: 0; }
+.kat-card__bg img { width: 100%; height: 100%; object-fit: cover; }
+/* Foto-Card mit linksseitigem Cream-Fade (Textlesbarkeit) - gleiches Muster wie .hero-overlay/.cta-overlay. */
+.kat-card__overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--cream) 0%, var(--cream) 42%, color-mix(in srgb, var(--cream) 55%, transparent) 62%, transparent 85%); }
+.kat-card__content { position: relative; z-index: 2; padding: clamp(28px, 4vw, 48px) clamp(24px, 3vw, 36px); align-self: center; max-width: 78%; }
 .kat-icon { width: 40px; height: 40px; margin-bottom: 20px; color: var(--gold); }
 .kat-card h2 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; margin-bottom: 10px; }
 .kat-card p { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 20px; line-height: 1.65; }
 .kat-link { font-size: 0.72rem; letter-spacing: 0.12em; font-weight: 500; color: var(--gold); }
 .kat-link:hover { text-decoration: underline; }
 
-.ueber-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
+/* 3 gleich breite Spalten: Text | Foto | Kennzahlen-Grid - entspricht 1:1 dem Mockup
+   (nicht Foto+Stats gestapelt in einer zweiten Spalte). */
+.ueber-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 4vw, 56px); align-items: stretch; }
 .ueber-text .section-headline { margin-bottom: 20px; }
 .ueber-text p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 24px; }
-.ueber-right { display: flex; flex-direction: column; gap: 24px; }
+.ueber-inner .ueber-portrait { aspect-ratio: auto; height: 100%; border-radius: var(--radius-card); overflow: hidden; }
 .ueber-portrait { aspect-ratio: 4/5; border-radius: var(--radius-card); overflow: hidden; }
 .ueber-portrait img { width: 100%; height: 100%; object-fit: cover; }
+.ueber-inner .stats-grid { align-content: start; }
 
 .galerie { background: var(--cream-dark); }
 .galerie-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; gap: 20px; }
@@ -475,7 +488,7 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
    EVENTS (dunkel) — Event-Kategorien (statisch), USP-Grid, CTA-Section
    ====================================================================== */
 .kat-section { background: var(--dark-surface); }
-.kat-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+.kat-cards-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 40px; }
 .kat-section .kat-card { padding: 32px 28px; border: 1px solid var(--dark-border); border-radius: var(--radius-card); background: var(--dark-mid); transition: border-color var(--transition), background var(--transition); }
 .kat-section .kat-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.04); }
 .kat-section .kat-icon { width: 36px; height: 36px; color: var(--gold); margin-bottom: 16px; }
@@ -531,6 +544,7 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
 .leistung-text { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
 .leistungen-cta { text-align: center; }
 
+.filme-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
 .galerie-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 28px; }
 
 .prozess-section { background: var(--dark-surface); }
@@ -646,10 +660,12 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
 .kontakt-info-value { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 2px; }
 .kontakt-info-sub { font-size: 0.78rem; color: var(--text-light); }
 
-.karte-section { background: var(--cream-dark); }
+/* Karte (links) + FAQ (rechts) als eine Zeile - entspricht dem Kontakt-Mockup. */
+.karte-faq-section { background: var(--cream-dark); }
+.karte-faq-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
 .karte-placeholder {
   background: linear-gradient(160deg, #e8dcc8 0%, #d4c9a8 50%, #c4b890 100%);
-  aspect-ratio: 16 / 7; border-radius: var(--radius-card); overflow: hidden;
+  aspect-ratio: 4 / 3; border-radius: var(--radius-card); overflow: hidden;
   display: flex; align-items: center; justify-content: center; position: relative;
 }
 .karte-pin { display: flex; flex-direction: column; align-items: center; gap: 8px; }
@@ -657,8 +673,7 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
 .karte-pin-label { background: rgba(255,255,255,0.92); border-radius: 4px; padding: 6px 14px; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; color: var(--text-dark); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
 .karte-attribution { position: absolute; bottom: 10px; right: 12px; font-size: 0.65rem; color: var(--text-mid); }
 
-.faq-section { background: var(--cream); }
-.faq-header { margin-bottom: 40px; }
+.faq-header { margin-bottom: 24px; }
 .faq-list { display: flex; flex-direction: column; gap: 2px; }
 details.faq-item { border: 1px solid var(--cream-dark); border-radius: var(--radius-card); overflow: hidden; }
 details.faq-item + details.faq-item { margin-top: -1px; }
@@ -693,7 +708,7 @@ details[open] .faq-chevron { transform: rotate(180deg); }
   .kat-card { border-right: none; border-bottom: 1px solid var(--cream-dark); }
   .kat-card:last-child { border-bottom: none; }
   .kat-cards-grid .kat-card, .kat-section .kat-card { border-bottom: 1px solid var(--dark-border); }
-  .ueber-inner, .story-inner, .page-hero-inner, .feature-grid, .kontakt-inner, .cta-split-inner { grid-template-columns: 1fr; }
+  .ueber-inner, .story-inner, .page-hero-inner, .feature-grid, .kontakt-inner, .cta-split-inner, .karte-faq-inner { grid-template-columns: 1fr; }
   .cta-split-img { min-height: 220px; }
   .filme-grid, .galerie-grid { grid-template-columns: repeat(2, 1fr); }
   .filme-grid-3 { grid-template-columns: 1fr; }

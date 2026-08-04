@@ -13,12 +13,15 @@ kategorien:
   - name: Hochzeiten
     text: Echte Momente. Für die Ewigkeit.
     url: /hochzeiten/
+    bild: /assets/uploads/home-kat-hochzeiten.svg
   - name: Events
     text: Momente, die verbinden.
     url: /events/
+    bild: /assets/uploads/home-kat-events.svg
   - name: Commercials
     text: Starke Bilder. Starke Marken.
     url: /commercials/
+    bild: /assets/uploads/home-kat-commercials.svg
 
 ueber_mich:
   foto: /assets/uploads/portrait-placeholder.svg
@@ -32,6 +35,10 @@ ueber_mich:
       label: Projekte
     - wert: Ehrlich
       label: "& Persönlich"
+    - wert: Deutschlandweit
+      label: "& International"
+    - wert: Hochwertig
+      label: Filme
 
 cta:
   headline: Jeder Film beginnt mit einer Geschichte.

@@ -6,6 +6,57 @@ E-Mail, Ansprechpartner) sind aus der Quelle übernommen und echt; rechtliche
 Pflichttexte sind weiterhin Platzhalter (siehe `[Platzhalter: …]` in
 `_pages/impressum.md` / `_pages/datenschutz.md`) — die muss der Kunde liefern.
 
+## Qualitätspass gegen die 6 Kunden-Mockups (nachträglich, siehe Abweichungs-Bilanz im Chat)
+
+Struktur-Fixes gegenüber dem vorherigen Stand — alle Werte weiterhin über
+`.pages.yml`/CMS editierbar:
+
+- **Journal aus der Navigation entfernt** (`_data/navigation.yml`,
+  `visible: false`) — in keinem Mockup vorhanden. Seite/Collection bleiben
+  bestehen, im CMS jederzeit mit `visible: true` reaktivierbar.
+- **Home-Kategorienkarten** (`kategorien` in `startseite.yml`) haben jetzt ein
+  `bild`-Feld — volles Foto mit linksseitigem Cream-Fade (gleiches Muster wie
+  Hero/CTA-Overlay), Icon+Text liegen darüber. Die zuvor unbenutzt im Repo
+  liegenden `home-kat-*.jpg` waren direkte Bildausschnitte aus dem
+  Mockup-PNG (verboten, siehe Sourcing-Regel) — gelöscht und durch
+  Gradient-Platzhalter-SVGs ersetzt.
+- **Home „Über mich"**: jetzt 3 gleich breite Spalten (Text | Foto |
+  Kennzahlen-Grid) statt Foto+Stats gestapelt in einer zweiten Spalte — 1:1
+  wie im Mockup. Kennzahlen auf 6 Kacheln erweitert (+ Deutschlandweit &
+  International, + Hochwertige Filme), alle mit Icon (vorher nur Text, obwohl
+  `.stat-icon`-CSS bereits existierte).
+- **Events-Kategorien**: 6. Karte „Konzerte & Live Events" entfernt (Mockup
+  zeigt exakt 5 in einer Zeile); `.kat-cards-grid` auf 5 Spalten gestellt.
+- **Icons pro Item statt ein generischer Kreis für alle**: Hochzeiten-Werte,
+  Events-Kategorien/-Stärken, Commercials-Formate, Über-mich-Ansatz sowie alle
+  Kennzahlen-Grids haben jetzt je Eintrag ein passendes Icon (Liquid
+  `case`/`if` auf Titel/Label gemappt).
+- **Kontakt: Karte + FAQ zu einer Zwei-Spalten-Zeile zusammengeführt**
+  (vorher zwei separate volle Sektionen untereinander).
+- **Über-mich-Footer**: 4. Spalte zeigt „Meine Ausrüstung" (`ausruestung` aus
+  `ueber-mich.yml`, war zuvor unbenutzt) statt „Rechtliches" — Impressum/
+  Datenschutz wandern auf dieser Seite stattdessen in die Copyright-Zeile,
+  bleiben also weiterhin verlinkt.
+- **Footer-Copyright** zeigt jetzt „ALLE RECHTE VORBEHALTEN" statt des
+  Ansprechpartner-Namens (kommt in keinem Mockup vor, Name steht bereits im
+  Kontakt-Footer-Block).
+- **Portfolio-Kartenzahl an Mockup angeglichen**: 5 neue Platzhalter-Projekte
+  angelegt (2× Hochzeit, 4× Commercial — ehrliche `Platzhalterprojekt`-Titel,
+  keine erfundenen Kundennamen), damit Home (5), Hochzeiten (3) und
+  Commercials (5) die im Mockup gezeigte Kartenzahl erreichen.
+- **Grid-Layout-Bug behoben**: `.filme-grid`/`.filme-grid-3`/`.galerie-grid`
+  teilten sich die Klasse `projekt-grid` mit der eigenständigen
+  `/portfolio/`-Übersicht; deren `auto-fill`-Regel gewann per Cascade-Reihenfolge
+  und verzerrte die Spaltenzahl (sichtbar erst ab genug Karten). `projekt-grid`
+  jetzt nur noch auf der Portfolio-Übersicht, die drei Seiten-Grids haben eigene
+  CSS-Regeln.
+
+**Offener Punkt beim Kunden (bewusst nicht gefaked):** Das Kontakt-Formular im
+Mockup existiert nur, solange `formular_endpoint` in `settings.yml` gesetzt ist
+— aktuell leer, „Andere Wege" läuft daher volle Breite. Sobald ein echter
+Formular-Endpoint (z. B. Formspree) vorliegt, erscheint das Formular
+automatisch zweispaltig wie im Mockup.
+
 ## Seitenstruktur (6 Kernseiten + Theme-System)
 
 Jede Kernseite ist eine eigene Markdown-Datei im Root (`index.md`,

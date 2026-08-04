@@ -30,8 +30,11 @@
   nav_order: 6
   visible: true
 
+# Journal steht in KEINEM der 6 Kunden-Mockups in der Navigation. Seite/
+# Collection bleiben bestehen (nur ausgeblendet) - im CMS jederzeit durch
+# visible: true wieder aktivierbar.
 - nav_label: "Journal"
   url: "/aktuelles/"
   nav_order: 10
-  visible: true
+  visible: false
   requires_posts: true

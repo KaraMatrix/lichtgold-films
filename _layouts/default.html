@@ -86,19 +86,23 @@
       <div class="kat-grid reveal">
         {% for k in d.kategorien %}
         <article class="kat-card">
-          <div class="kat-icon" aria-hidden="true">
-            {% case k.name %}
-            {% when 'Hochzeiten' %}
-            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40"><circle cx="14" cy="20" r="9"/><circle cx="26" cy="20" r="9"/></svg>
-            {% when 'Events' %}
-            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40"><circle cx="20" cy="13" r="5"/><circle cx="9" cy="16" r="4"/><circle cx="31" cy="16" r="4"/><path d="M20 21c-6 0-10 3-10 6h20c0-3-4-6-10-6z"/><path d="M9 23c-4 0-7 2-7 4h14"/><path d="M31 23c4 0 7 2 7 4H24"/></svg>
-            {% else %}
-            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40"><rect x="4" y="12" width="32" height="22" rx="3"/><circle cx="20" cy="23" r="7"/><circle cx="20" cy="23" r="4"/><path d="M14 12l3-5h6l3 5"/><circle cx="33" cy="16" r="2" fill="currentColor" stroke="none"/></svg>
-            {% endcase %}
+          <div class="kat-card__bg" aria-hidden="true"><img src="{{ k.bild | relative_url }}" alt="" loading="lazy" width="800" height="600"></div>
+          <div class="kat-card__overlay" aria-hidden="true"></div>
+          <div class="kat-card__content">
+            <div class="kat-icon" aria-hidden="true">
+              {% case k.name %}
+              {% when 'Hochzeiten' %}
+              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40"><circle cx="14" cy="20" r="9"/><circle cx="26" cy="20" r="9"/></svg>
+              {% when 'Events' %}
+              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40"><circle cx="20" cy="13" r="5"/><circle cx="9" cy="16" r="4"/><circle cx="31" cy="16" r="4"/><path d="M20 21c-6 0-10 3-10 6h20c0-3-4-6-10-6z"/><path d="M9 23c-4 0-7 2-7 4h14"/><path d="M31 23c4 0 7 2 7 4H24"/></svg>
+              {% else %}
+              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40"><rect x="4" y="12" width="32" height="22" rx="3"/><circle cx="20" cy="23" r="7"/><circle cx="20" cy="23" r="4"/><path d="M14 12l3-5h6l3 5"/><circle cx="33" cy="16" r="2" fill="currentColor" stroke="none"/></svg>
+              {% endcase %}
+            </div>
+            <h2>{{ k.name }}</h2>
+            <p>{{ k.text }}</p>
+            <a href="{{ k.url | relative_url }}" class="kat-link">MEHR ERFAHREN →</a>
           </div>
-          <h2>{{ k.name }}</h2>
-          <p>{{ k.text }}</p>
-          <a href="{{ k.url | relative_url }}" class="kat-link">MEHR ERFAHREN →</a>
         </article>
         {% endfor %}
       </div>
@@ -110,22 +114,33 @@
       <div class="ueber-inner">
         <div class="ueber-text reveal">
           <span class="section-eyebrow">ÜBER MICH</span>
-          <h2 class="section-headline">Ich bin {{ f.ansprechpartner | default: f.name | split: ' ' | first }}, Videograf aus Leidenschaft.</h2>
+          <h2 class="section-headline">Ich bin {{ f.ansprechpartner | default: f.name | split: ' ' | first }}.<br>Videograf aus Leidenschaft.</h2>
           <p>{{ d.ueber_mich.text }}</p>
           <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-outline">MEIN ANSATZ →</a>
         </div>
-        <div class="ueber-right reveal">
-          <div class="ueber-portrait">
-            <img src="{{ d.ueber_mich.foto | relative_url }}" alt="{{ f.ansprechpartner | default: f.name }} – Videograf mit Kamera" loading="lazy" width="480" height="600">
-          </div>
-          <div class="stats-grid">
-            {% for s in d.ueber_mich.stats %}
-            <div class="stat-item">
-              <div class="stat-value">{{ s.wert }}</div>
-              <div class="stat-label">{{ s.label }}</div>
+        <div class="ueber-portrait reveal">
+          <img src="{{ d.ueber_mich.foto | relative_url }}" alt="{{ f.ansprechpartner | default: f.name }} – Videograf mit Kamera" loading="lazy" width="480" height="600">
+        </div>
+        <div class="stats-grid reveal">
+          {% for s in d.ueber_mich.stats %}
+          <div class="stat-item">
+            <div class="stat-icon" aria-hidden="true">
+              {% if s.label contains 'Erfahrung' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+              {% elsif s.label contains 'Leidenschaft' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-9.5-8.5C.5 8 2 4 6 4c2 0 3.5 1.5 4 3 .5-1.5 2-3 4-3 4 0 5.5 4 3.5 8.5C19 16.65 12 21 12 21z"/></svg>
+              {% elsif s.label contains 'Persönlich' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3.3 3-6 7-6s7 2.7 7 6"/><path d="M15 14c2.8.3 5 2.3 5 6"/></svg>
+              {% elsif s.wert == 'Deutschlandweit' %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>
+              {% else %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="4"/><path d="M8 7l1.5-3h5L16 7"/></svg>
+              {% endif %}
             </div>
-            {% endfor %}
+            <div class="stat-value">{{ s.wert }}</div>
+            <div class="stat-label">{{ s.label }}</div>
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -142,7 +157,7 @@
         </div>
         <a href="{{ '/portfolio/' | relative_url }}" class="galerie-link">ALLE FILME ANSEHEN →</a>
       </div>
-      <div class="filme-grid projekt-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+      <div class="filme-grid">
         {% for p in filme %}{% include projekt-card.html projekt=p %}{% endfor %}
       </div>
     </div>
@@ -199,7 +214,7 @@
           <h2 class="section-headline">Einige Hochzeitsfilme</h2>
         </div>
       </div>
-      <div class="filme-grid-3 projekt-grid reveal">
+      <div class="filme-grid-3 reveal">
         {% for p in filme %}{% include projekt-card.html projekt=p %}{% endfor %}
       </div>
       <div class="film-grid-cta reveal">
@@ -214,7 +229,17 @@
       <div class="werte-grid reveal">
         {% for w in d.werte %}
         <div class="wert-item">
-          <div class="wert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="9"/></svg></div>
+          <div class="wert-icon" aria-hidden="true">
+            {% if w.titel contains 'Emotional' %}
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-9.5-8.5C.5 8 2 4 6 4c2 0 3.5 1.5 4 3 .5-1.5 2-3 4-3 4 0 5.5 4 3.5 8.5C19 16.65 12 21 12 21z"/></svg>
+            {% elsif w.titel contains 'Unauffällig' %}
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>
+            {% elsif w.titel contains 'Zeitlos' %}
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            {% else %}
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3.3 3-6 7-6s7 2.7 7 6"/><path d="M15 14c2.8.3 5 2.3 5 6"/></svg>
+            {% endif %}
+          </div>
           <div class="wert-title">{{ w.titel | upcase }}</div>
           <p class="wert-text">{{ w.text }}</p>
         </div>
@@ -272,7 +297,19 @@
       <div class="kat-cards-grid reveal">
         {% for k in d.kategorien %}
         <article class="kat-card">
-          <div class="kat-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><circle cx="18" cy="18" r="12"/></svg></div>
+          <div class="kat-icon" aria-hidden="true">
+            {% if k.titel contains 'Konferenzen' %}
+            <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><rect x="5" y="12" width="26" height="17" rx="2"/><path d="M12 12V9a2 2 0 012-2h8a2 2 0 012 2v3"/></svg>
+            {% elsif k.titel contains 'Firmenfeier' %}
+            <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M11 5l4 4-4 12M25 5l-4 4 4 12"/><path d="M13 21h10M15 15h6"/></svg>
+            {% elsif k.titel contains 'Produktlaunch' %}
+            <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M18 4c4 3 7 9 7 14 0 3-1.5 6-3 7l-4 4-4-4c-1.5-1-3-4-3-7 0-5 3-11 7-14z"/><circle cx="18" cy="15" r="2.5"/></svg>
+            {% elsif k.titel contains 'Messen' %}
+            <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><rect x="5" y="7" width="26" height="17" rx="2"/><path d="M12 29h12M18 24v5"/></svg>
+            {% else %}
+            <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M9 5h18l6 9-15 17L3 14z"/><path d="M3 14h30M13 5l5 9 5-9M13 22l5 9 5-9"/></svg>
+            {% endif %}
+          </div>
           <h3>{{ k.titel | upcase }}</h3>
           <p>{{ k.text }}</p>
         </article>
@@ -287,7 +324,17 @@
       <div class="usps-grid reveal">
         {% for u in d.usps %}
         <div class="usp-item">
-          <div class="usp-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10"/></svg></div>
+          <div class="usp-icon-wrap" aria-hidden="true">
+            {% if u.titel contains 'Diskret' %}
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="4"/><path d="M8 7l1.5-3h5L16 7"/></svg>
+            {% elsif u.titel contains 'Schnell' %}
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>
+            {% elsif u.titel contains 'Cinematischer' %}
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>
+            {% else %}
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3.3 3-6 7-6s7 2.7 7 6"/><path d="M15 14c2.8.3 5 2.3 5 6"/></svg>
+            {% endif %}
+          </div>
           <div class="usp-title">{{ u.titel | upcase }}</div>
           <p class="usp-text">{{ u.text }}</p>
         </div>
@@ -346,7 +393,19 @@
       <div class="leistungen-grid reveal">
         {% for l in d.formate %}
         <div class="leistung-item">
-          <div class="leistung-icon" aria-hidden="true"><svg viewBox="0 0 44 44"><rect x="6" y="10" width="32" height="24" rx="2"/></svg></div>
+          <div class="leistung-icon" aria-hidden="true">
+            {% if l.titel contains 'Imagefilm' %}
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15h30v20a2 2 0 01-2 2H6a2 2 0 01-2-2V15z"/><path d="M4 15l3-8h27l3 8"/><path d="M12 7l3 8M22 7l3 8"/></svg>
+            {% elsif l.titel contains 'Produktvideo' %}
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 5L5 14v16l17 9 17-9V14z"/><path d="M5 14l17 9 17-9M22 23v16"/></svg>
+            {% elsif l.titel contains 'Werbespot' %}
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 18v8a3 3 0 003 3h2l5 9V9l-5 9H9a3 3 0 00-3 3z"/><path d="M25 14a8 8 0 010 16"/></svg>
+            {% elsif l.titel contains 'Corporate' %}
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 22l8-8 5 4 6-4"/><path d="M20 14l4 4M28 18l4-4"/><path d="M4 22v6M40 22v6"/></svg>
+            {% else %}
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="22" r="4.5"/><circle cx="32" cy="10" r="4.5"/><circle cx="32" cy="34" r="4.5"/><path d="M14 20l14-8M14 24l14 8"/></svg>
+            {% endif %}
+          </div>
           <div class="leistung-title">{{ l.titel | upcase }}</div>
           <p class="leistung-text">{{ l.text }}</p>
         </div>
@@ -364,7 +423,7 @@
         <span class="section-eyebrow">AUSGEWÄHLTE PROJEKTE</span>
         <h2 class="section-headline">Portfolio</h2>
       </div>
-      <div class="galerie-grid projekt-grid reveal">
+      <div class="galerie-grid reveal">
         {% for p in filme %}{% include projekt-card.html projekt=p %}{% endfor %}
       </div>
     </div>
@@ -427,6 +486,17 @@
           <div class="stats-grid">
             {% for s in d.stats %}
             <div class="stat-item">
+              <div class="stat-icon" aria-hidden="true">
+                {% if s.label contains 'Erfahrung' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+                {% elsif s.label contains 'Leidenschaft' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-9.5-8.5C.5 8 2 4 6 4c2 0 3.5 1.5 4 3 .5-1.5 2-3 4-3 4 0 5.5 4 3.5 8.5C19 16.65 12 21 12 21z"/></svg>
+                {% elsif s.wert == 'Deutschlandweit' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>
+                {% else %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="4"/><path d="M8 7l1.5-3h5L16 7"/></svg>
+                {% endif %}
+              </div>
               <div class="stat-value">{{ s.wert }}</div>
               <div class="stat-label">{{ s.label | upcase }}</div>
             </div>
@@ -446,7 +516,17 @@
       <div class="ansatz-grid reveal">
         {% for a in d.ansatz %}
         <div class="ansatz-item">
-          <div class="ansatz-icon" aria-hidden="true"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="16"/></svg></div>
+          <div class="ansatz-icon" aria-hidden="true">
+            {% if a.titel == 'Echt' %}
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="14" width="36" height="26" rx="3"/><circle cx="22" cy="27" r="8"/><path d="M16 14l3-6h6l3 6"/></svg>
+            {% elsif a.titel == 'Unauffällig' %}
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="22" cy="22" r="5"/><path d="M4 22s7-13 18-13 18 13 18 13-7 13-18 13S4 22 4 22z"/></svg>
+            {% elsif a.titel == 'Zeitlos' %}
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="22" cy="22" r="16"/><path d="M22 13v9l6 6"/></svg>
+            {% else %}
+            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6h20l8 11-18 21L4 17z"/><path d="M4 17h36M16 6l6 11 6-11M16 27l6 11 6-11"/></svg>
+            {% endif %}
+          </div>
           <div class="ansatz-title">{{ a.titel | upcase }}</div>
           <p class="ansatz-text">{{ a.text }}</p>
         </div>
@@ -575,38 +655,42 @@
     </div>
   </section>
 
-  <section class="karte-section" aria-label="Standort {{ f.ort }}">
+  {% comment %}
+    Karte + FAQ als EINE Zwei-Spalten-Zeile (Mockup: Karte links, FAQ rechts,
+    nicht zwei separate volle Sektionen untereinander).
+  {% endcomment %}
+  <section class="karte-faq-section" aria-label="Standort und häufige Fragen">
     <div class="container">
-      <div class="karte-placeholder reveal" role="img" aria-label="Standort {{ f.ort }} – {{ f.name }}, {{ f.strasse }}, {{ f.plz }} {{ f.ort }}">
-        <div class="karte-pin" aria-hidden="true">
-          <div class="karte-pin-dot"></div>
-          <div class="karte-pin-label">{{ f.name }} · {{ f.ort }}</div>
+      <div class="karte-faq-inner">
+        <div class="karte-placeholder reveal" role="img" aria-label="Standort {{ f.ort }} – {{ f.name }}, {{ f.strasse }}, {{ f.plz }} {{ f.ort }}">
+          <div class="karte-pin" aria-hidden="true">
+            <div class="karte-pin-dot"></div>
+            <div class="karte-pin-label">{{ f.name }} · {{ f.ort }}</div>
+          </div>
+          <div class="karte-attribution" aria-hidden="true">© OpenStreetMap-Mitwirkende</div>
         </div>
-        <div class="karte-attribution" aria-hidden="true">© OpenStreetMap-Mitwirkende</div>
-      </div>
-    </div>
-  </section>
 
-  {% if d.faq.size > 0 %}
-  <section class="faq-section" aria-label="Häufige Fragen">
-    <div class="container">
-      <div class="faq-header reveal">
-        <span class="section-eyebrow">HÄUFIGE FRAGEN</span>
-        <h2 class="section-headline">Häufige Fragen</h2>
-      </div>
-      <div class="faq-list reveal">
-        {% for item in d.faq %}
-        <details class="faq-item">
-          <summary class="faq-question">{{ item.frage }}
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <p class="faq-answer">{{ item.antwort }}</p>
-        </details>
-        {% endfor %}
+        {% if d.faq.size > 0 %}
+        <div class="faq-block reveal">
+          <div class="faq-header">
+            <span class="section-eyebrow">HÄUFIGE FRAGEN</span>
+            <h2 class="section-headline">Häufige Fragen</h2>
+          </div>
+          <div class="faq-list">
+            {% for item in d.faq %}
+            <details class="faq-item">
+              <summary class="faq-question">{{ item.frage }}
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <p class="faq-answer">{{ item.antwort }}</p>
+            </details>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
       </div>
     </div>
   </section>
-  {% endif %}
 
   <section class="cta-banner-split" aria-label="Projekt starten">
     <div class="cta-split-inner">
@@ -733,6 +817,20 @@
         </address>
       </div>
 
+      {% comment %}
+        Über-mich-Mockup ersetzt hier die "Rechtliches"-Spalte durch "Meine
+        Ausrüstung" - Impressum/Datenschutz wandern stattdessen in die
+        Copyright-Zeile (footer-bottom), bleiben also auf jeder Seite verlinkt.
+      {% endcomment %}
+      {% if page.page_type == 'ueber-mich' and d.ausruestung.size > 0 %}
+      <div class="footer-col">
+        <h4>MEINE AUSRÜSTUNG</h4>
+        <ul>
+          {% for item in d.ausruestung %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+        <span class="footer-mehr-dazu">Mehr dazu →</span>
+      </div>
+      {% else %}
       <div class="footer-col">
         <h4>RECHTLICHES</h4>
         <ul>
@@ -742,10 +840,15 @@
           <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-filled" style="font-size:0.68rem;padding:12px 20px;">ANFRAGE STARTEN</a>
         </div>
       </div>
+      {% endif %}
     </div>
 
     <div class="footer-bottom">
-      <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ f.name | upcase }}{% if f.ansprechpartner and f.ansprechpartner != "" %} – {{ f.ansprechpartner }}{% endif %}</p>
+      {% if page.page_type == 'ueber-mich' %}
+      <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ f.name | upcase }}{% for item in footer_nav %} | <a href="{{ item.url | relative_url }}">{{ item.nav_label | upcase }}</a>{% endfor %}</p>
+      {% else %}
+      <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ f.name | upcase }} | ALLE RECHTE VORBEHALTEN</p>
+      {% endif %}
     </div>
   </div>
 </footer>
