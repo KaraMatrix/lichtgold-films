@@ -1,0 +1,46 @@
+# Editierbare Inhalte der Seite /commercials/ (Theme: dunkel).
+hero:
+  eyebrow: Commercial Films
+  headline: "Starke Bilder.<br>Starke Marken."
+  subline: Imagefilme, Werbespots und Corporate Films – kreativ konzipiert, professionell produziert, mit Wirkung.
+  bild: /assets/uploads/commercials-hero.svg
+
+feature:
+  lead: Filme, die Wirkung zeigen.
+  headline: Deine Botschaft. Professionell inszeniert.
+  text: Ob Imagefilm, Produktvideo oder Werbespot – wir entwickeln mit dir ein Konzept, das zu deiner Marke passt, und setzen es handwerklich auf höchstem Niveau um. Das Ergebnis – Bewegtbild, das Vertrauen schafft und Aufmerksamkeit erzeugt.
+  punkte:
+    - Kreative Konzeption & Storytelling
+    - Hochwertige Produktion & moderne Technik
+    - Kinoqualität für Web, TV & Social Media
+    - Zuverlässig, effizient & zielgerichtet
+  video_url: ""
+  bild: /assets/uploads/commercials-video.svg
+
+# Statische Formate (kein Portfolio-Bezug — im Quell-Design ohne Fotos, nur Icon+Text).
+formate:
+  - titel: Imagefilme
+    text: Dein Unternehmen, deine Werte – meisterhaft inszeniert.
+  - titel: Produktvideos
+    text: Dein Produkt in seinem besten Licht – für Web und Shop.
+  - titel: Werbespots
+    text: 30 oder 60 Sekunden, die im Gedächtnis bleiben.
+  - titel: Corporate Films
+    text: Recruiting, Employer Branding, interne Kommunikation.
+  - titel: Social Media Content
+    text: Reels, Stories & Clips – native für jede Plattform.
+
+prozess:
+  - titel: Verstehen
+    text: Wir hören zu – deine Marke, dein Ziel, deine Zielgruppe. Erst verstehen, dann planen.
+  - titel: Konzeption
+    text: Storyboard, Konzept, Drehbuch. Wir entwickeln eine kreative Idee, die funktioniert.
+  - titel: Produktion
+    text: Professioneller Dreh, Licht, Ton – alles aus einer Hand. Effizient und termingerecht.
+  - titel: Wirkung
+    text: Schnitt, Color Grading, Sounddesign – bis der Film eure Marke auf den Punkt bringt.
+
+cta:
+  headline: Bereit für deinen nächsten Film?
+  text: Lass uns gemeinsam deine Marke in Bewegung bringen.
+  bild: /assets/uploads/commercials-cta.svg

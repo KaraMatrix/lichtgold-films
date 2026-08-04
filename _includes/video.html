@@ -1,0 +1,61 @@
+{% comment %}
+  Klick-zum-Laden Video-Player (YouTube/Vimeo) — DSGVO-Kern: Es geht KEINE Anfrage an
+  Google/Vimeo, bevor jemand aktiv klickt. Solange kein Klick passiert ist, steht hier
+  nur ein <button> mit einem LOKALEN Vorschaubild (aus assets/uploads) — bewusst auch
+  bei YouTube kein i.ytimg.com-Thumbnail, das wäre schon vor dem Klick eine Anfrage an
+  Google. Erst der Klick (assets/script.js) injiziert das iframe:
+  youtube-nocookie.com bzw. player.vimeo.com mit dnt=1.
+
+  Parameter:
+    include.url    – YouTube- oder Vimeo-Link, beliebiges Format. Leer/undefiniert
+                     lassen -> es wird nur das Standbild gezeigt, kein Player.
+    include.poster – Pflicht: Pfad zu einem lokalen Vorschaubild.
+    include.title  – Pflicht: Beschriftung (aria-label / iframe-title).
+    include.eager  – optional: true, wenn dieses Bild das LCP-Element ist (z. B. Hero)
+                     -> loading="eager" + fetchpriority="high" statt lazy.
+{% endcomment %}
+{% assign v_url = include.url | default: "" | strip %}
+{% assign platform = "" %}
+{% assign video_id = "" %}
+{% if v_url != "" %}
+  {% if v_url contains "youtu" %}
+    {% assign platform = "youtube" %}
+    {% if v_url contains "youtu.be/" %}
+      {% assign rest = v_url | split: "youtu.be/" | last %}
+    {% elsif v_url contains "watch?v=" %}
+      {% assign rest = v_url | split: "v=" | last %}
+    {% elsif v_url contains "/shorts/" %}
+      {% assign rest = v_url | split: "/shorts/" | last %}
+    {% elsif v_url contains "/embed/" %}
+      {% assign rest = v_url | split: "/embed/" | last %}
+    {% else %}
+      {% assign rest = "" %}
+    {% endif %}
+    {% assign rest = rest | split: "?" | first %}
+    {% assign rest = rest | split: "&" | first %}
+    {% assign video_id = rest | split: "/" | first %}
+  {% elsif v_url contains "vimeo.com" %}
+    {% assign platform = "vimeo" %}
+    {% if v_url contains "/video/" %}
+      {% assign rest = v_url | split: "/video/" | last %}
+    {% else %}
+      {% assign rest = v_url | split: "vimeo.com/" | last %}
+    {% endif %}
+    {% assign rest = rest | split: "?" | first %}
+    {% assign video_id = rest | split: "/" | first %}
+  {% endif %}
+{% endif %}
+{% assign v_title = include.title | default: "Video" %}
+{% assign loading_attr = "lazy" %}
+{% if include.eager %}{% assign loading_attr = "eager" %}{% endif %}
+
+<div class="video-embed">
+  {% if video_id != "" and include.poster %}
+  <button type="button" class="video-facade reveal" data-platform="{{ platform }}" data-video-id="{{ video_id }}" aria-label="{{ v_title | escape }} – Video laden und abspielen">
+    <img class="video-facade__poster" src="{{ include.poster | relative_url }}" alt="" loading="{{ loading_attr }}" {% if include.eager %}fetchpriority="high"{% endif %} width="1280" height="720">
+    <span class="video-facade__play" aria-hidden="true"></span>
+  </button>
+  {% elsif include.poster %}
+  <img class="video-embed__standbild reveal" src="{{ include.poster | relative_url }}" alt="{{ v_title | escape }}" loading="{{ loading_attr }}" {% if include.eager %}fetchpriority="high"{% endif %} width="1280" height="720">
+  {% endif %}
+</div>

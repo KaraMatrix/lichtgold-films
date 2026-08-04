@@ -1,0 +1,32 @@
+# Editierbare Inhalte der Seite /kontakt/ (Theme: hell).
+hero:
+  headline: Lass uns dein Projekt verwirklichen.
+  text: Du hast eine Idee, ein Event oder möchtest mehr über eine Zusammenarbeit erfahren? Ich freue mich darauf, von dir zu hören.
+  bild: /assets/uploads/kontakt-hero.svg
+
+formular:
+  eyebrow: Schreib mir
+  headline: Ich antworte persönlich.
+  text: Erzähl mir von deinem Projekt und deinen Vorstellungen. Je mehr Details du teilst, desto besser kann ich dir ein individuelles Angebot erstellen.
+  hinweis: Ich melde mich innerhalb von 24–48 Stunden bei dir zurück.
+
+andere_wege:
+  telefon_hinweis: auf Anfrage, gerne auch per WhatsApp
+  standort_hinweis: Einsatz deutschlandweit und international.
+
+faq:
+  - frage: Wie läuft eine Zusammenarbeit ab?
+    antwort: Wir starten mit einem kostenlosen Kennenlerngespräch, besprechen dein Projekt und deine Vorstellungen. Danach erhältst du ein individuelles Angebot.
+  - frage: Wie weit im Voraus sollte man buchen?
+    antwort: Für Hochzeiten empfehle ich mindestens 6–12 Monate im Voraus zu buchen, da beliebte Termine schnell vergeben sind. Für andere Projekte nehme ich gerne kurzfristige Anfragen an.
+  - frage: Bietest du auch internationale Aufträge an?
+    antwort: Ja, ich bin deutschlandweit und international tätig. Anfahrtskosten werden individuell besprochen.
+  - frage: Was kostet ein Film?
+    antwort: Die Preise variieren je nach Projektumfang, Dauer und Aufwand. Ich erstelle dir gerne ein unverbindliches Angebot.
+  - frage: Wie lange dauert es, bis wir den Film erhalten?
+    antwort: Für Hochzeitsfilme plane ich in der Regel 4–8 Wochen, für andere Projekte 1–3 Wochen.
+
+cta:
+  headline: Bereit, deine Geschichte zum Leben zu erwecken?
+  text: Ich begleite dich von der ersten Idee bis zum finalen Film – authentisch, emotional und mit Liebe zum Detail.
+  bild: /assets/uploads/kontakt-cta.svg

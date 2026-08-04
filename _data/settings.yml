@@ -1,0 +1,19 @@
+# Firmen-/Kontaktdaten aus der Quelle (Lichtgold-Films-HTML) übernommen — echte
+# öffentliche Website-Inhalte. Kein Telefon bekannt (Quelle zeigt nur "auf Anfrage",
+# keine echte Nummer) -> Feld bewusst leer, Anruf-Button blendet sich dann aus (POLA).
+firma:
+  name: Lichtgold Films
+  slogan: Hochzeitsfilme, Eventfilme und Commercials mit Herz, Ästhetik und einem Blick für das Wesentliche.
+  ansprechpartner: Taylan Ilkay Mogel
+  telefon: ""
+  email: anfrage@lichtgoldfilms.de
+  strasse: Ramlerstraße 22
+  plz: "13355"
+  ort: Berlin
+farbe_primaer: "#C9A84C"
+google_bewertung_url: ""
+instagram_handle: "@lichtgoldfilms"
+instagram_url: "https://instagram.com/lichtgoldfilms"
+vimeo_url: ""
+youtube_url: ""
+formular_endpoint: ""

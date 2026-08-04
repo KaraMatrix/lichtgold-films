@@ -1,0 +1,50 @@
+# Editierbare Inhalte der Seite /ueber-mich/ (Theme: hell).
+hero:
+  headline: Videograf aus Leidenschaft.
+  text: Geschichten, die berühren. Bilder, die bleiben. Ich begleite Hochzeiten, Events und Unternehmen und sorge dafür, dass echte Emotionen in zeitlosen Filmen festgehalten werden.
+  bild: /assets/uploads/ueber-mich-hero.svg
+
+story:
+  headline: Wie alles begann.
+  portraet: /assets/uploads/ueber-mich-story.svg
+  text:
+    - Schon immer haben mich Filme und Emotionen fasziniert. Mit 17 habe ich meine erste Kamera in die Hand genommen und gemerkt – das ist mehr als ein Hobby, das ist meine Leidenschaft.
+    - Heute habe ich das Privileg, Menschen an den wichtigsten Tagen ihres Lebens zu begleiten und für Unternehmen starke visuelle Geschichten zu erzählen.
+    - Mein Ziel ist immer dasselbe – echte Emotionen einfangen und Filme schaffen, die man immer wieder fühlen möchte.
+
+stats:
+  - wert: 5+
+    label: Jahre Erfahrung
+  - wert: 100+
+    label: Projekte
+  - wert: Deutschlandweit
+    label: Und darüber hinaus
+  - wert: 100%
+    label: Leidenschaft
+
+ansatz:
+  - titel: Echt
+    text: Ich halte echte Emotionen fest – ungestellt und authentisch.
+  - titel: Unauffällig
+    text: Ich bin da, ohne im Mittelpunkt zu stehen. So entstehen die ehrlichsten Momente.
+  - titel: Zeitlos
+    text: Meine Filme sind so gestaltet, dass sie auch in Jahren noch Gänsehaut erzeugen.
+  - titel: Hochwertig
+    text: Von der Planung bis zum finalen Film lege ich Wert auf höchste Qualität und Detail.
+
+kamera_bilder:
+  - /assets/uploads/ueber-mich-kamera-1.svg
+  - /assets/uploads/ueber-mich-kamera-2.svg
+  - /assets/uploads/ueber-mich-kamera-3.svg
+  - /assets/uploads/ueber-mich-kamera-4.svg
+  - /assets/uploads/ueber-mich-kamera-5.svg
+
+ausruestung:
+  - Sony FX3
+  - Sony A7SIII
+  - DJI RS3 Pro
+  - Sigma Art Objektive
+
+cta:
+  headline: Lass uns gemeinsam deine Geschichte erzählen.
+  text: Ich freue mich darauf, dich und dein Projekt kennenzulernen.

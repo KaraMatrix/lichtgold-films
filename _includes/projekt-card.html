@@ -1,0 +1,25 @@
+{% comment %}
+  Portfolio-Karte für ein Projekt aus der _projekte-Collection.
+  Parameter: include.projekt (ein Dokument aus site.projekte)
+  Wird von Startseite/Hochzeiten/Commercials (gefiltert nach Kategorie) sowie der
+  Portfolio-Übersicht /portfolio/ genutzt (DRY statt mehrfach dieselbe Kartenmarkup).
+{% endcomment %}
+{% assign p = include.projekt %}
+{% case p.kategorie %}
+  {% when 'hochzeit' %}{% assign kat = 'Hochzeit' %}
+  {% when 'event' %}{% assign kat = 'Event' %}
+  {% when 'commercial' %}{% assign kat = 'Commercial' %}
+  {% else %}{% assign kat = p.kategorie %}
+{% endcase %}
+<a class="projekt-thumb reveal" href="{{ p.url | relative_url }}">
+  <span class="projekt-thumb__frame">
+    <img src="{{ p.vorschaubild | relative_url }}" alt="{{ p.title | escape }}" loading="lazy" width="640" height="800">
+  </span>
+  {% if p.video_url and p.video_url != "" %}
+  <span class="projekt-thumb__play" aria-hidden="true"><span></span></span>
+  {% endif %}
+  <span class="projekt-thumb__info">
+    <span class="projekt-thumb__title">{{ p.title | upcase }}</span>
+    <span class="projekt-thumb__kat">{{ kat }}</span>
+  </span>
+</a>

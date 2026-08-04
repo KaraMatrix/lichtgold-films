@@ -1,0 +1,37 @@
+# Haupt-Navigation — entspricht 1:1 der Quell-Navigation (6 Kernseiten).
+# Rechtliches (Impressum/Datenschutz) kommt separat aus der _pages-Collection (Footer).
+- nav_label: "Home"
+  url: "/"
+  nav_order: 1
+  visible: true
+
+- nav_label: "Hochzeiten"
+  url: "/hochzeiten/"
+  nav_order: 2
+  visible: true
+
+- nav_label: "Events"
+  url: "/events/"
+  nav_order: 3
+  visible: true
+
+- nav_label: "Commercials"
+  url: "/commercials/"
+  nav_order: 4
+  visible: true
+
+- nav_label: "Über mich"
+  url: "/ueber-mich/"
+  nav_order: 5
+  visible: true
+
+- nav_label: "Kontakt"
+  url: "/kontakt/"
+  nav_order: 6
+  visible: true
+
+- nav_label: "Journal"
+  url: "/aktuelles/"
+  nav_order: 10
+  visible: true
+  requires_posts: true

@@ -1,0 +1,801 @@
+# Pages CMS Konfiguration — https://pagescms.org
+# Definiert, welche Inhalte der Kunde über die CMS-Oberfläche bearbeiten kann.
+
+media: assets/uploads
+
+content:
+  # --- Website-Einstellungen: Firma/Kontakt (_data/settings.yml) ---
+  - name: settings
+    label: "Website-Einstellungen"
+    type: file
+    path: _data/settings.yml
+    fields:
+      - name: firma
+        label: "Firma"
+        type: object
+        fields:
+          - name: name
+            label: "Firmenname"
+            type: string
+            required: true
+          - name: slogan
+            label: "Slogan"
+            type: string
+          - name: ansprechpartner
+            label: "Ansprechpartner (Vor- und Nachname, optional)"
+            type: string
+            required: false
+          - name: telefon
+            label: "Telefon (optional)"
+            type: string
+            required: false
+            description: "Leer lassen, wenn keine Telefonnummer genannt werden soll — der Anruf-Button blendet sich dann aus."
+          - name: email
+            label: "E-Mail-Adresse"
+            type: string
+            required: true
+          - name: strasse
+            label: "Straße und Hausnummer"
+            type: string
+            required: true
+          - name: plz
+            label: "Postleitzahl"
+            type: string
+            required: true
+          - name: ort
+            label: "Ort"
+            type: string
+            required: true
+      - name: farbe_primaer
+        label: "Gold-Akzentfarbe (Hex-Code)"
+        type: string
+        description: "z. B. #C9A84C"
+        required: true
+      - name: google_bewertung_url
+        label: "Link zu Google-Bewertungen (optional)"
+        type: string
+        required: false
+        description: "Leer lassen, um den Bewertungs-Button auszublenden."
+      - name: instagram_handle
+        label: "Instagram-Handle (optional, z. B. @firmenname)"
+        type: string
+        required: false
+      - name: instagram_url
+        label: "Instagram-Link (optional)"
+        type: string
+        required: false
+      - name: vimeo_url
+        label: "Vimeo-Link (optional)"
+        type: string
+        required: false
+      - name: youtube_url
+        label: "YouTube-Link (optional)"
+        type: string
+        required: false
+      - name: formular_endpoint
+        label: "Formular-Endpoint (z. B. Formspree-URL)"
+        type: string
+        required: false
+        description: "Leer lassen, um das Kontaktformular auszublenden — die 'Andere Wege'-Spalte auf der Kontaktseite füllt dann die volle Breite."
+
+  # --- Navigation (_data/navigation.yml) ---
+  - name: navigation
+    label: "Navigation"
+    type: file
+    path: _data/navigation.yml
+    list: true
+    fields:
+      - name: nav_label
+        label: "Bezeichnung"
+        type: string
+        required: true
+      - name: url
+        label: "Ziel-URL"
+        type: string
+        required: true
+      - name: nav_order
+        label: "Reihenfolge"
+        type: number
+        required: true
+      - name: visible
+        label: "Sichtbar"
+        type: boolean
+        default: true
+      - name: requires_posts
+        label: "Nur anzeigen, wenn Blogbeiträge existieren"
+        type: boolean
+        default: false
+
+  # --- Startseite (_data/startseite.yml) ---
+  - name: startseite
+    label: "Startseite — Inhalte"
+    type: file
+    path: _data/startseite.yml
+    fields:
+      - name: hero
+        label: "Hero"
+        type: object
+        fields:
+          - name: eyebrow
+            label: "Kicker (klein, über der Headline)"
+            type: string
+            required: true
+          - name: headline
+            label: "Headline (HTML-Zeilenumbrüche mit <br> möglich)"
+            type: string
+            required: true
+          - name: subline
+            label: "Subline"
+            type: text
+            required: true
+          - name: video_url
+            label: "Hero-Video (optional)"
+            type: string
+            required: false
+          - name: bild
+            label: "Hero-Bild"
+            type: image
+            required: true
+      - name: kategorien
+        label: "Leistungs-Kategorien (3 Karten)"
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: "Name"
+            type: string
+            required: true
+          - name: text
+            label: "Kurztext"
+            type: string
+            required: true
+          - name: url
+            label: "Ziel-Link"
+            type: string
+            required: true
+      - name: ueber_mich
+        label: "Über mich (Kurzfassung für die Startseite)"
+        type: object
+        fields:
+          - name: foto
+            label: "Foto"
+            type: image
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+          - name: stats
+            label: "Kennzahlen (4 Kacheln)"
+            type: object
+            list: true
+            fields:
+              - name: wert
+                label: "Wert"
+                type: string
+                required: true
+              - name: label
+                label: "Beschriftung"
+                type: string
+                required: true
+      - name: cta
+        label: "CTA-Banner"
+        type: object
+        fields:
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: sub
+            label: "Subline (kursiv)"
+            type: string
+            required: true
+
+  # --- Hochzeiten (_data/hochzeiten.yml) ---
+  - name: hochzeiten
+    label: "Seite: Hochzeiten"
+    type: file
+    path: _data/hochzeiten.yml
+    fields:
+      - name: hero
+        label: "Hero"
+        type: object
+        fields:
+          - name: eyebrow
+            label: "Kicker"
+            type: string
+            required: true
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: subline
+            label: "Subline"
+            type: text
+            required: true
+          - name: bild
+            label: "Hero-Bild"
+            type: image
+            required: true
+      - name: feature
+        label: "Video-Block"
+        type: object
+        fields:
+          - name: eyebrow
+            label: "Kicker"
+            type: string
+            required: true
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+          - name: video_url
+            label: "Video (YouTube/Vimeo, optional)"
+            type: string
+            required: false
+          - name: bild
+            label: "Vorschaubild"
+            type: image
+            required: true
+      - name: werte
+        label: "Werte (4 Kacheln)"
+        type: object
+        list: true
+        fields:
+          - name: titel
+            label: "Titel"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+      - name: cta
+        label: "CTA-Banner"
+        type: object
+        fields:
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+          - name: bild
+            label: "Bild"
+            type: image
+            required: true
+
+  # --- Events (_data/events.yml) ---
+  - name: events
+    label: "Seite: Events"
+    type: file
+    path: _data/events.yml
+    fields:
+      - name: hero
+        label: "Hero"
+        type: object
+        fields:
+          - name: eyebrow
+            label: "Kicker"
+            type: string
+            required: true
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: subline
+            label: "Subline"
+            type: text
+            required: true
+          - name: bild
+            label: "Hero-Bild"
+            type: image
+            required: true
+      - name: feature
+        label: "Video-Block"
+        type: object
+        fields:
+          - name: lead
+            label: "Kicker"
+            type: string
+            required: true
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+          - name: video_url
+            label: "Video (YouTube/Vimeo, optional)"
+            type: string
+            required: false
+          - name: bild
+            label: "Vorschaubild"
+            type: image
+            required: true
+      - name: kategorien
+        label: "Event-Kategorien (6 Karten)"
+        type: object
+        list: true
+        fields:
+          - name: titel
+            label: "Titel"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+      - name: usps
+        label: "Stärken (4 Kacheln)"
+        type: object
+        list: true
+        fields:
+          - name: titel
+            label: "Titel"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+      - name: cta
+        label: "CTA-Section"
+        type: object
+        fields:
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: bild
+            label: "Hintergrundbild"
+            type: image
+            required: true
+
+  # --- Commercials (_data/commercials.yml) ---
+  - name: commercials
+    label: "Seite: Commercials"
+    type: file
+    path: _data/commercials.yml
+    fields:
+      - name: hero
+        label: "Hero"
+        type: object
+        fields:
+          - name: eyebrow
+            label: "Kicker"
+            type: string
+            required: true
+          - name: headline
+            label: "Headline (HTML-Zeilenumbrüche mit <br> möglich)"
+            type: string
+            required: true
+          - name: subline
+            label: "Subline"
+            type: text
+            required: true
+          - name: bild
+            label: "Hero-Bild"
+            type: image
+            required: true
+      - name: feature
+        label: "Video-Block"
+        type: object
+        fields:
+          - name: lead
+            label: "Kicker"
+            type: string
+            required: true
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+          - name: punkte
+            label: "Stichpunkte"
+            type: string
+            list: true
+          - name: video_url
+            label: "Video (YouTube/Vimeo, optional)"
+            type: string
+            required: false
+          - name: bild
+            label: "Vorschaubild"
+            type: image
+            required: true
+      - name: formate
+        label: "Formate (5 Kacheln)"
+        type: object
+        list: true
+        fields:
+          - name: titel
+            label: "Titel"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+      - name: prozess
+        label: "Prozess-Schritte"
+        type: object
+        list: true
+        fields:
+          - name: titel
+            label: "Titel"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+      - name: cta
+        label: "CTA-Section"
+        type: object
+        fields:
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+          - name: bild
+            label: "Hintergrundbild"
+            type: image
+            required: true
+
+  # --- Über mich (_data/ueber-mich.yml) ---
+  - name: ueber_mich_seite
+    label: "Seite: Über mich"
+    type: file
+    path: _data/ueber-mich.yml
+    fields:
+      - name: hero
+        label: "Hero"
+        type: object
+        fields:
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+          - name: bild
+            label: "Hero-Bild"
+            type: image
+            required: true
+      - name: story
+        label: "Meine Geschichte"
+        type: object
+        fields:
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: portraet
+            label: "Portrait"
+            type: image
+            required: true
+          - name: text
+            label: "Textabsätze"
+            type: text
+            list: true
+      - name: stats
+        label: "Kennzahlen (4 Kacheln)"
+        type: object
+        list: true
+        fields:
+          - name: wert
+            label: "Wert"
+            type: string
+            required: true
+          - name: label
+            label: "Beschriftung"
+            type: string
+            required: true
+      - name: ansatz
+        label: "Mein Ansatz (4 Kacheln)"
+        type: object
+        list: true
+        fields:
+          - name: titel
+            label: "Titel"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+      - name: kamera_bilder
+        label: "Ein Blick hinter die Kamera (Bildergalerie, optional)"
+        type: image
+        list: true
+        required: false
+      - name: ausruestung
+        label: "Ausrüstung (optional)"
+        type: string
+        list: true
+        required: false
+      - name: cta
+        label: "CTA-Banner"
+        type: object
+        fields:
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+
+  # --- Kontakt (_data/kontakt.yml) ---
+  - name: kontakt_seite
+    label: "Seite: Kontakt"
+    type: file
+    path: _data/kontakt.yml
+    fields:
+      - name: hero
+        label: "Hero"
+        type: object
+        fields:
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+          - name: bild
+            label: "Hero-Bild"
+            type: image
+            required: true
+      - name: formular
+        label: "Formular-Texte"
+        type: object
+        fields:
+          - name: eyebrow
+            label: "Kicker"
+            type: string
+            required: true
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+          - name: hinweis
+            label: "Hinweis unter dem Absende-Button"
+            type: string
+            required: true
+      - name: andere_wege
+        label: "Andere Wege — Zusatztexte"
+        type: object
+        fields:
+          - name: telefon_hinweis
+            label: "Telefon/WhatsApp-Hinweistext"
+            type: string
+            required: true
+          - name: standort_hinweis
+            label: "Standort-Hinweistext"
+            type: string
+            required: true
+      - name: faq
+        label: "Häufige Fragen"
+        type: object
+        list: true
+        fields:
+          - name: frage
+            label: "Frage"
+            type: string
+            required: true
+          - name: antwort
+            label: "Antwort"
+            type: text
+            required: true
+      - name: cta
+        label: "CTA-Banner"
+        type: object
+        fields:
+          - name: headline
+            label: "Headline"
+            type: string
+            required: true
+          - name: text
+            label: "Text"
+            type: text
+            required: true
+          - name: bild
+            label: "Bild"
+            type: image
+            required: true
+
+  # --- Die 6 Kernseiten selbst: Titel/Beschreibung/Darstellung (warm/hell/dunkel) ---
+  - name: seite_home
+    label: "Seiten-Einstellungen: Start"
+    type: file
+    path: index.md
+    fields: &seiten_einstellungen_felder
+      - name: description
+        label: "Meta-Beschreibung (SEO, Google-Snippet)"
+        type: string
+        required: true
+      - name: theme
+        label: "Darstellung"
+        type: select
+        required: true
+        options:
+          values:
+            - name: warm
+              label: "Warm (Gold-Beige — nur Startseite)"
+            - name: hell
+              label: "Hell (fast weiß)"
+            - name: dunkel
+              label: "Dunkel"
+
+  - name: seite_hochzeiten
+    label: "Seiten-Einstellungen: Hochzeiten"
+    type: file
+    path: hochzeiten.md
+    fields: *seiten_einstellungen_felder
+
+  - name: seite_events
+    label: "Seiten-Einstellungen: Events"
+    type: file
+    path: events.md
+    fields: *seiten_einstellungen_felder
+
+  - name: seite_commercials
+    label: "Seiten-Einstellungen: Commercials"
+    type: file
+    path: commercials.md
+    fields: *seiten_einstellungen_felder
+
+  - name: seite_ueber_mich
+    label: "Seiten-Einstellungen: Über mich"
+    type: file
+    path: ueber-mich.md
+    fields: *seiten_einstellungen_felder
+
+  - name: seite_kontakt
+    label: "Seiten-Einstellungen: Kontakt"
+    type: file
+    path: kontakt.md
+    fields: *seiten_einstellungen_felder
+
+  # --- Portfolio-Projekte (_projekte/) ---
+  - name: projekte
+    label: "Portfolio-Projekte"
+    type: collection
+    path: _projekte
+    view:
+      fields: [title, kategorie, published]
+    fields:
+      - name: title
+        label: "Titel"
+        type: string
+        required: true
+      - name: kategorie
+        label: "Kategorie"
+        type: select
+        required: true
+        options:
+          values:
+            - name: hochzeit
+              label: "Hochzeit"
+            - name: event
+              label: "Event"
+            - name: commercial
+              label: "Commercial"
+      - name: video_url
+        label: "Video-URL (optional)"
+        type: string
+        required: false
+        description: "YouTube- oder Vimeo-Link einfügen. Leer lassen, wenn (noch) kein Video vorliegt — es wird dann nur das Vorschaubild ohne Play-Symbol gezeigt."
+      - name: vorschaubild
+        label: "Vorschaubild"
+        type: image
+        required: true
+        description: "Pflichtfeld — wird als Kartenbild und als Video-Vorschaubild genutzt (auch bei YouTube, aus DSGVO-Gründen kein Thumbnail von externen Servern vor dem Klick)."
+      - name: beschreibung
+        label: "Kurzbeschreibung"
+        type: text
+        required: true
+      - name: reihenfolge
+        label: "Reihenfolge"
+        type: number
+        required: true
+        description: "Steuert die Sortierung innerhalb der jeweiligen Kategorie (niedrigste Zahl zuerst) sowie in 'Einige aktuelle Filme' auf der Startseite (alle Kategorien gemischt)."
+      - name: published
+        label: "Veröffentlicht"
+        type: boolean
+        default: true
+
+  # --- Unterseiten, z. B. Impressum/Datenschutz (_pages/) ---
+  - name: pages
+    label: "Unterseiten"
+    type: collection
+    path: _pages
+    view:
+      fields: [title, published]
+    fields:
+      - name: title
+        label: "Titel"
+        type: string
+        required: true
+      - name: nav_label
+        label: "Bezeichnung in der Navigation"
+        type: string
+        required: true
+      - name: nav_order
+        label: "Reihenfolge in der Navigation"
+        type: number
+        default: 50
+      - name: nav_location
+        label: "Anzeigeort"
+        type: select
+        options:
+          values:
+            - name: header
+              label: "Hauptnavigation"
+            - name: footer
+              label: "Footer"
+        default: footer
+      - name: published
+        label: "Veröffentlicht"
+        type: boolean
+        default: true
+      - name: noindex
+        label: "Von Google ausschließen (z. B. Impressum/Datenschutz)"
+        type: boolean
+        default: false
+      - name: sitemap
+        label: "In Sitemap aufnehmen"
+        type: boolean
+        default: true
+      - name: body
+        label: "Inhalt"
+        type: rich-text
+
+  # --- Blog (_posts/) ---
+  - name: posts
+    label: "Journal (Blog)"
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{fields.title}.md"
+    view:
+      fields: [title, date]
+    fields:
+      - name: title
+        label: "Titel"
+        type: string
+        required: true
+      - name: date
+        label: "Datum"
+        type: date
+        required: true
+      - name: image
+        label: "Aufmacherbild"
+        type: image
+        required: false
+      - name: body
+        label: "Text"
+        type: rich-text

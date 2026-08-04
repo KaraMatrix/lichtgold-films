@@ -1,0 +1,49 @@
+title: "Lichtgold Films"
+description: "Hochzeitsfilme, Eventfilme und Commercials mit Herz, Ästhetik und einem Blick für das Wesentliche."
+lang: de
+url: ""
+baseurl: "/lichtgold-films" # pro Kunde anpassen: "/<repo-name>", bei eigener Domain: ""
+
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+  projekte:
+    output: true
+    permalink: /portfolio/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: default
+      page_type: post
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+      page_type: page
+  - scope:
+      path: ""
+      type: projekte
+    values:
+      layout: default
+      page_type: projekt
+
+markdown: kramdown
+permalink: /:title/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .pages.yml
+  - node_modules
+  - vendor
+  - .bundle

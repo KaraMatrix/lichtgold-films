@@ -1,0 +1,28 @@
+# Editierbare Inhalte der Seite /hochzeiten/ (Theme: hell).
+hero:
+  eyebrow: Hochzeitsfilme & Videografie
+  headline: Echte Momente. Für die Ewigkeit.
+  subline: Hochzeitsfilme, Events & Commercials in Berlin und weltweit.
+  bild: /assets/uploads/hochzeiten-hero.svg
+
+feature:
+  eyebrow: Eure Geschichte, echt erzählt
+  headline: Hochzeitsfilme, die fühlen.
+  text: Jede Hochzeit ist einzigartig – und genau so soll euer Film sein. Wir begleiten euch unauffällig, fangen die großen Emotionen und die kleinen Augenblicke ein, die oft niemand bemerkt. Erinnerungen, die bleiben.
+  video_url: ""
+  bild: /assets/uploads/hochzeiten-video.svg
+
+werte:
+  - titel: Emotional & echt
+    text: Wir fangen echte Momente ein – ungestellt und voller Gefühl.
+  - titel: Unauffällig & diskret
+    text: Ich bin da, ohne im Mittelpunkt zu stehen. So entstehen die ehrlichsten Momente.
+  - titel: Zeitlos & cinematisch
+    text: Unsere Filme sind so gestaltet, dass sie auch in Jahren noch Gänsehaut erzeugen.
+  - titel: Persönlich & vertraut
+    text: Von den ersten Kennenlernen bis zum fertigen Film – wir sind an eurer Seite.
+
+cta:
+  headline: Lasst uns eure Geschichte erzählen.
+  text: Ich freue mich darauf, euch kennenzulernen und mehr über eure Pläne zu erfahren.
+  bild: /assets/uploads/hochzeiten-cta.svg

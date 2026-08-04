@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'de' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  {% if page.noindex %}<meta name="robots" content="noindex, follow">{% endif %}
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <style>:root{--gold: {{ site.data.settings.farbe_primaer | default: '#C9A84C' }};}</style>
+  <script src="{{ '/assets/script.js' | relative_url }}" defer></script>
+</head>
+<body data-theme="{{ page.theme | default: 'hell' }}" class="pt-{{ page.page_type }}">
+
+{% comment %}
+  Navigation wird aus zwei Quellen zusammengebaut:
+  - _data/navigation.yml (feste Links — die 6 Kernseiten)
+  - _pages-Collection (Impressum/Datenschutz, nav_location: footer)
+  Beide nutzen dieselben Feldnamen (nav_label/nav_order/url), daher per Liquid
+  zusammenfügbar und sortierbar.
+{% endcomment %}
+{% assign nav_data = site.data.navigation | where_exp: "item", "item.visible" %}
+{% if site.posts.size == 0 %}
+  {% assign nav_data = nav_data | where_exp: "item", "item.requires_posts != true" %}
+{% endif %}
+{% comment %}
+  site.pages ist hier bewusst die _pages-Collection (Ordner _pages/), nicht Jekylls
+  eingebaute Pages-Liste — eine Collection namens "pages" überschreibt in Liquid
+  site.pages (Jekyll::Drops::SiteDrop#[]). Ruby-seitige Plugins (jekyll-sitemap etc.)
+  greifen weiter auf die echte Seiten-Liste zu und sind davon nicht betroffen.
+{% endcomment %}
+{% assign nav_pages = site.pages | where_exp: "p", "p.published" | where_exp: "p", "p.nav_label" %}
+{% assign nav_items = nav_data | concat: nav_pages | sort: "nav_order" %}
+{% assign header_nav = nav_items | where_exp: "item", "item.nav_location != 'footer'" %}
+{% assign footer_nav = nav_items | where_exp: "item", "item.nav_location == 'footer'" %}
+{% assign f = site.data.settings.firma %}
+
+<header>
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a href="{{ '/' | relative_url }}" class="nav-logo" aria-label="{{ f.name }} Startseite">
+      {{ f.name | split: ' ' | first | upcase }}<span>{{ f.name | split: ' ' | last | upcase }}</span>
+    </a>
+    <ul class="nav-links" role="list">
+      {% for item in header_nav %}
+      <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active" aria-current="page"{% endif %}>{{ item.nav_label | upcase }}</a></li>
+      {% endfor %}
+    </ul>
+    <a href="{{ '/kontakt/' | relative_url }}" class="btn-nav">ANFRAGE STARTEN</a>
+    <button class="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-overlay">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div id="nav-overlay" class="nav-overlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+  <ul class="nav-links" role="list">
+    {% for item in header_nav %}
+    <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.nav_label | upcase }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-filled">ANFRAGE STARTEN</a>
+</div>
+
+<main>
+{% case page.page_type %}
+
+{% when 'home' %}
+  {% assign d = site.data.startseite %}
+  <section class="hero" aria-label="Startbereich">
+    <div class="hero-bg" role="img" aria-label="">
+      <img src="{{ d.hero.bild | relative_url }}" alt="" loading="eager" fetchpriority="high" width="1600" height="1000">
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <span class="eyebrow reveal">{{ d.hero.eyebrow | upcase }}</span>
+      <h1 class="hero-headline reveal">{{ d.hero.headline }}</h1>
+      <p class="hero-sub reveal">{{ d.hero.subline }}</p>
+      <div class="hero-btns reveal">
+        <a href="#galerie" class="btn btn-outline-dark">PORTFOLIO ANSEHEN</a>
+        <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-filled">ANFRAGE SENDEN</a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Leistungskategorien">
+    <div class="container">
+      <div class="kat-grid reveal">
+        {% for k in d.kategorien %}
+        <article class="kat-card">
+          <div class="kat-icon" aria-hidden="true">
+            {% case k.name %}
+            {% when 'Hochzeiten' %}
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40"><circle cx="14" cy="20" r="9"/><circle cx="26" cy="20" r="9"/></svg>
+            {% when 'Events' %}
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40"><circle cx="20" cy="13" r="5"/><circle cx="9" cy="16" r="4"/><circle cx="31" cy="16" r="4"/><path d="M20 21c-6 0-10 3-10 6h20c0-3-4-6-10-6z"/><path d="M9 23c-4 0-7 2-7 4h14"/><path d="M31 23c4 0 7 2 7 4H24"/></svg>
+            {% else %}
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40"><rect x="4" y="12" width="32" height="22" rx="3"/><circle cx="20" cy="23" r="7"/><circle cx="20" cy="23" r="4"/><path d="M14 12l3-5h6l3 5"/><circle cx="33" cy="16" r="2" fill="currentColor" stroke="none"/></svg>
+            {% endcase %}
+          </div>
+          <h2>{{ k.name }}</h2>
+          <p>{{ k.text }}</p>
+          <a href="{{ k.url | relative_url }}" class="kat-link">MEHR ERFAHREN →</a>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Über {{ f.ansprechpartner | default: f.name }}">
+    <div class="container">
+      <div class="ueber-inner">
+        <div class="ueber-text reveal">
+          <span class="section-eyebrow">ÜBER MICH</span>
+          <h2 class="section-headline">Ich bin {{ f.ansprechpartner | default: f.name | split: ' ' | first }}, Videograf aus Leidenschaft.</h2>
+          <p>{{ d.ueber_mich.text }}</p>
+          <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-outline">MEIN ANSATZ →</a>
+        </div>
+        <div class="ueber-right reveal">
+          <div class="ueber-portrait">
+            <img src="{{ d.ueber_mich.foto | relative_url }}" alt="{{ f.ansprechpartner | default: f.name }} – Videograf mit Kamera" loading="lazy" width="480" height="600">
+          </div>
+          <div class="stats-grid">
+            {% for s in d.ueber_mich.stats %}
+            <div class="stat-item">
+              <div class="stat-value">{{ s.wert }}</div>
+              <div class="stat-label">{{ s.label }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% assign filme = site.projekte | where_exp: "p", "p.published" | sort: "reihenfolge" | slice: 0, 5 %}
+  {% if filme.size > 0 %}
+  <section class="galerie" id="galerie" aria-label="Aktuelle Filme">
+    <div class="container">
+      <div class="galerie-header reveal">
+        <div>
+          <span class="section-eyebrow">EINIGE AKTUELLE FILME</span>
+          <h2 class="section-headline">Portfolio</h2>
+        </div>
+        <a href="{{ '/portfolio/' | relative_url }}" class="galerie-link">ALLE FILME ANSEHEN →</a>
+      </div>
+      <div class="filme-grid projekt-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+        {% for p in filme %}{% include projekt-card.html projekt=p %}{% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="cta-banner" aria-label="Kontaktaufforderung">
+    <div class="container reveal">
+      <h2 class="cta-headline">{{ d.cta.headline }}</h2>
+      <p class="cta-banner__sub">{{ d.cta.sub }}</p>
+      <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-filled" style="padding:16px 36px;font-size:0.78rem;">JETZT ANFRAGEN</a>
+    </div>
+  </section>
+
+{% when 'hochzeiten' %}
+  {% assign d = site.data.hochzeiten %}
+  <section class="page-hero" aria-label="Hochzeitsfilme Hero">
+    <div class="page-hero-inner">
+      <div class="reveal">
+        <span class="eyebrow">{{ d.hero.eyebrow | upcase }}</span>
+        <h1 class="page-hero-headline">{{ d.hero.headline }}</h1>
+        <p class="page-hero-sub">{{ d.hero.subline }}</p>
+        <a href="#video-block" class="btn btn-outline">MEHR ERFAHREN →</a>
+      </div>
+      <div class="page-hero-img reveal">
+        <img src="{{ d.hero.bild | relative_url }}" alt="" loading="eager" fetchpriority="high" width="480" height="600">
+      </div>
+    </div>
+  </section>
+
+  <section id="video-block" aria-label="Hochzeitsfilme die fühlen">
+    <div class="container">
+      <div class="feature-grid reveal">
+        <div class="feature-text">
+          <span class="section-eyebrow">{{ d.feature.eyebrow | upcase }}</span>
+          <h2 class="section-headline">{{ d.feature.headline }}</h2>
+          <p>{{ d.feature.text }}</p>
+          <a href="{{ '/ueber-mich/' | relative_url }}" class="btn btn-outline">MEHR ÜBER UNS →</a>
+        </div>
+        <div>
+          {% include video.html url=d.feature.video_url poster=d.feature.bild title=d.feature.headline %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% assign filme = site.projekte | where: "published", true | where: "kategorie", "hochzeit" | sort: "reihenfolge" | slice: 0, 3 %}
+  {% if filme.size > 0 %}
+  <section class="film-section" aria-label="Einige Hochzeitsfilme">
+    <div class="container">
+      <div class="film-grid-header reveal">
+        <div>
+          <span class="section-eyebrow">EINIGE HOCHZEITSFILME</span>
+          <h2 class="section-headline">Einige Hochzeitsfilme</h2>
+        </div>
+      </div>
+      <div class="filme-grid-3 projekt-grid reveal">
+        {% for p in filme %}{% include projekt-card.html projekt=p %}{% endfor %}
+      </div>
+      <div class="film-grid-cta reveal">
+        <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-outline">ALLE HOCHZEITSFILME ANSEHEN →</a>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section aria-label="Unsere Werte">
+    <div class="container">
+      <div class="werte-grid reveal">
+        {% for w in d.werte %}
+        <div class="wert-item">
+          <div class="wert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="9"/></svg></div>
+          <div class="wert-title">{{ w.titel | upcase }}</div>
+          <p class="wert-text">{{ w.text }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner-split" aria-label="Anfrage starten">
+    <div class="cta-split-inner">
+      <div class="cta-split-text reveal">
+        <h2 class="section-headline">{{ d.cta.headline }}</h2>
+        <p class="cta-split-sub">{{ d.cta.text }}</p>
+        <div><a href="{{ '/kontakt/' | relative_url }}" class="btn btn-filled">ANFRAGE STARTEN →</a></div>
+      </div>
+      <div class="cta-split-img">
+        <img src="{{ d.cta.bild | relative_url }}" alt="" loading="lazy" width="800" height="640">
+      </div>
+    </div>
+  </section>
+
+{% when 'events' %}
+  {% assign d = site.data.events %}
+  <section class="hero" aria-label="Events Hero">
+    <div class="hero-bg"><img src="{{ d.hero.bild | relative_url }}" alt="" loading="eager" fetchpriority="high" width="1600" height="1000"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <span class="section-eyebrow reveal">{{ d.hero.eyebrow | upcase }}</span>
+      <h1 class="hero-headline reveal">{{ d.hero.headline }}</h1>
+      <p class="hero-sub reveal">{{ d.hero.subline }}</p>
+      <a href="#mehr" class="btn btn-outline reveal">MEHR ERFAHREN ↓</a>
+    </div>
+  </section>
+
+  <section id="mehr" aria-label="Eventfilme Leistungsbeschreibung">
+    <div class="container">
+      <div class="feature-grid reveal">
+        <div class="feature-text">
+          <span class="feature-lead">{{ d.feature.lead | upcase }}</span>
+          <h2 class="section-headline">{{ d.feature.headline }}</h2>
+          <p>{{ d.feature.text }}</p>
+          <a href="{{ '/ueber-mich/' | relative_url }}" class="btn btn-outline">MEHR ÜBER UNS</a>
+        </div>
+        <div>{% include video.html url=d.feature.video_url poster=d.feature.bild title=d.feature.headline %}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kat-section" aria-label="Event-Kategorien">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:40px;">
+        <span class="section-eyebrow">WAS WIR FILMEN</span>
+        <h2 class="section-headline">Unsere Event-Kategorien</h2>
+      </div>
+      <div class="kat-cards-grid reveal">
+        {% for k in d.kategorien %}
+        <article class="kat-card">
+          <div class="kat-icon" aria-hidden="true"><svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><circle cx="18" cy="18" r="12"/></svg></div>
+          <h3>{{ k.titel | upcase }}</h3>
+          <p>{{ k.text }}</p>
+        </article>
+        {% endfor %}
+      </div>
+      <div class="kat-cta reveal"><a href="{{ '/kontakt/' | relative_url }}" class="btn btn-outline">ALLE EVENTFILME ANSEHEN</a></div>
+    </div>
+  </section>
+
+  <section aria-label="Unsere Stärken">
+    <div class="container">
+      <div class="usps-grid reveal">
+        {% for u in d.usps %}
+        <div class="usp-item">
+          <div class="usp-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="10"/></svg></div>
+          <div class="usp-title">{{ u.titel | upcase }}</div>
+          <p class="usp-text">{{ u.text }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" aria-label="Kontaktaufforderung Events">
+    <div class="cta-bg"><img src="{{ d.cta.bild | relative_url }}" alt="" loading="lazy" width="1600" height="900"></div>
+    <div class="cta-overlay" aria-hidden="true"></div>
+    <div class="container cta-content reveal">
+      <h2 class="section-headline">{{ d.cta.headline }}</h2>
+      <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-filled" style="margin-top:28px;padding:16px 36px;font-size:0.78rem;">ANFRAGE STARTEN →</a>
+    </div>
+  </section>
+
+{% when 'commercials' %}
+  {% assign d = site.data.commercials %}
+  <section class="hero" aria-label="Commercials Hero">
+    <div class="hero-bg"><img src="{{ d.hero.bild | relative_url }}" alt="" loading="eager" fetchpriority="high" width="1600" height="1000"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <span class="section-eyebrow reveal">{{ d.hero.eyebrow | upcase }}</span>
+      <h1 class="hero-headline reveal">{{ d.hero.headline }}</h1>
+      <p class="hero-sub reveal">{{ d.hero.subline }}</p>
+      <a href="#mehr" class="btn btn-outline reveal">MEHR ERFAHREN ↓</a>
+    </div>
+  </section>
+
+  <section id="mehr" aria-label="Commercial Films Leistungsbeschreibung">
+    <div class="container">
+      <div class="feature-grid reveal">
+        <div class="feature-text">
+          <span class="feature-lead">{{ d.feature.lead | upcase }}</span>
+          <h2 class="section-headline">{{ d.feature.headline }}</h2>
+          <p>{{ d.feature.text }}</p>
+          {% if d.feature.punkte.size > 0 %}
+          <ul class="check-list">
+            {% for punkt in d.feature.punkte %}<li>{{ punkt }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+          <a href="{{ '/ueber-mich/' | relative_url }}" class="btn btn-outline">MEHR ÜBER UNS</a>
+        </div>
+        <div>{% include video.html url=d.feature.video_url poster=d.feature.bild title=d.feature.headline %}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="leistungen-section" aria-label="Commercial-Leistungen">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:40px;text-align:center;">
+        <span class="section-eyebrow">WAS WIR PRODUZIEREN</span>
+        <h2 class="section-headline">Unsere Formate</h2>
+      </div>
+      <div class="leistungen-grid reveal">
+        {% for l in d.formate %}
+        <div class="leistung-item">
+          <div class="leistung-icon" aria-hidden="true"><svg viewBox="0 0 44 44"><rect x="6" y="10" width="32" height="24" rx="2"/></svg></div>
+          <div class="leistung-title">{{ l.titel | upcase }}</div>
+          <p class="leistung-text">{{ l.text }}</p>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="leistungen-cta reveal"><a href="{{ '/kontakt/' | relative_url }}" class="btn btn-outline">ALLE COMMERCIALS ANSEHEN →</a></div>
+    </div>
+  </section>
+
+  {% assign filme = site.projekte | where: "published", true | where: "kategorie", "commercial" | sort: "reihenfolge" | slice: 0, 5 %}
+  {% if filme.size > 0 %}
+  <section aria-label="Ausgewählte Projekte">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:32px;">
+        <span class="section-eyebrow">AUSGEWÄHLTE PROJEKTE</span>
+        <h2 class="section-headline">Portfolio</h2>
+      </div>
+      <div class="galerie-grid projekt-grid reveal">
+        {% for p in filme %}{% include projekt-card.html projekt=p %}{% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="prozess-section" aria-label="Unser Ansatz">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:48px;">
+        <span class="section-eyebrow">UNSER ANSATZ</span>
+        <h2 class="section-headline">Von der Idee zum Film</h2>
+      </div>
+      <div class="prozess-grid reveal">
+        {% for step in d.prozess %}
+        <div class="prozess-step">
+          <div class="prozess-num" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+          <div class="prozess-title">{{ step.titel | upcase }}</div>
+          <p class="prozess-text">{{ step.text }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" aria-label="Kontaktaufforderung Commercials">
+    <div class="cta-bg"><img src="{{ d.cta.bild | relative_url }}" alt="" loading="lazy" width="1600" height="900"></div>
+    <div class="cta-overlay" aria-hidden="true"></div>
+    <div class="container cta-content reveal">
+      <h2 class="section-headline">{{ d.cta.headline }}</h2>
+      <p class="cta-sub">{{ d.cta.text }}</p>
+      <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-filled" style="padding:16px 36px;font-size:0.78rem;">ANFRAGE STARTEN →</a>
+    </div>
+  </section>
+
+{% when 'ueber-mich' %}
+  {% assign d = site.data['ueber-mich'] %}
+  <section class="page-hero" aria-label="Über mich Hero">
+    <div class="page-hero-inner">
+      <div class="reveal">
+        <span class="eyebrow">ÜBER MICH</span>
+        <h1 class="page-hero-headline">{{ d.hero.headline }}</h1>
+        <p class="page-hero-sub">{{ d.hero.text }}</p>
+        <a href="#ansatz" class="btn btn-outline">MEHR ÜBER MEINEN ANSATZ →</a>
+      </div>
+      <div class="page-hero-img reveal"><img src="{{ d.hero.bild | relative_url }}" alt="{{ f.ansprechpartner | default: f.name }} mit Kamera" loading="eager" fetchpriority="high" width="480" height="600"></div>
+    </div>
+  </section>
+
+  <section aria-label="Meine Geschichte">
+    <div class="container">
+      <div class="story-inner reveal">
+        <div class="story-portrait"><img src="{{ d.story.portraet | relative_url }}" alt="{{ f.ansprechpartner | default: f.name }} mit Kamera" loading="lazy" width="480" height="600"></div>
+        <div class="story-right">
+          <div>
+            <span class="section-eyebrow">MEINE GESCHICHTE</span>
+            <h2 class="section-headline">{{ d.story.headline }}</h2>
+          </div>
+          {% for absatz in d.story.text %}<p>{{ absatz }}</p>{% endfor %}
+          <div><a href="#ansatz" class="btn btn-outline">MEHR ERFAHREN →</a></div>
+          <div class="stats-grid">
+            {% for s in d.stats %}
+            <div class="stat-item">
+              <div class="stat-value">{{ s.wert }}</div>
+              <div class="stat-label">{{ s.label | upcase }}</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ansatz" class="ansatz-section" aria-label="Mein Ansatz">
+    <div class="container">
+      <div class="ansatz-header reveal">
+        <span class="section-eyebrow">MEIN ANSATZ</span>
+        <h2 class="section-headline">Echt. Unaufdringlich. Zeitlos.</h2>
+      </div>
+      <div class="ansatz-grid reveal">
+        {% for a in d.ansatz %}
+        <div class="ansatz-item">
+          <div class="ansatz-icon" aria-hidden="true"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="16"/></svg></div>
+          <div class="ansatz-title">{{ a.titel | upcase }}</div>
+          <p class="ansatz-text">{{ a.text }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% if d.kamera_bilder.size > 0 %}
+  <section aria-label="Ein Blick hinter die Kamera">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:32px;"><span class="section-eyebrow">EIN BLICK HINTER DIE KAMERA</span></div>
+      <div class="kamera-grid reveal">
+        {% for bild in d.kamera_bilder %}
+        <div class="kamera-img"><img src="{{ bild | relative_url }}" alt="" loading="lazy" width="480" height="600"></div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="cta-simple" aria-label="Kontaktaufforderung">
+    <div class="container reveal" style="text-align:center;">
+      <h2 class="section-headline">{{ d.cta.headline }}</h2>
+      <p class="cta-simple-sub">{{ d.cta.text }}</p>
+      <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-filled">ANFRAGE STARTEN →</a>
+    </div>
+  </section>
+
+{% when 'kontakt' %}
+  {% assign d = site.data.kontakt %}
+  <section class="page-hero" aria-label="Kontakt Hero">
+    <div class="page-hero-inner">
+      <div class="reveal">
+        <span class="eyebrow">KONTAKT</span>
+        <h1 class="page-hero-headline">{{ d.hero.headline }}</h1>
+        <p class="page-hero-sub">{{ d.hero.text }}</p>
+        <a href="#formular" class="btn btn-outline">ANFRAGE STARTEN →</a>
+      </div>
+      <div class="page-hero-img reveal"><img src="{{ d.hero.bild | relative_url }}" alt="" loading="eager" fetchpriority="high" width="480" height="600"></div>
+    </div>
+  </section>
+
+  {% assign formular_endpoint = site.data.settings.formular_endpoint | default: "" %}
+  <section aria-label="Kontaktformular und Kontaktmöglichkeiten">
+    <div class="container">
+      <div class="kontakt-inner{% if formular_endpoint == "" %} kontakt-inner--voll{% endif %} reveal">
+
+        {% if formular_endpoint != "" %}
+        <div id="formular">
+          <div class="formular-text">
+            <span class="section-eyebrow">{{ d.formular.eyebrow | upcase }}</span>
+            <h2 class="section-headline">{{ d.formular.headline }}</h2>
+          </div>
+          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.75;margin-bottom:28px;">{{ d.formular.text }}</p>
+          <form class="contact-form" method="POST" action="{{ site.data.settings.formular_endpoint }}">
+            <div class="form-group">
+              <label class="form-label" for="name">DEIN NAME *</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="z. B. Max Mustermann" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">DEINE E-MAIL *</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="z. B. max@beispiel.de" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="anliegen">DEIN ANLIEGEN *</label>
+              <select class="form-select" id="anliegen" name="anliegen" required>
+                <option value="" disabled selected>Bitte auswählen</option>
+                <option value="hochzeitsfilm">Hochzeitsfilm</option>
+                <option value="eventfilm">Eventfilm</option>
+                <option value="commercial">Commercial</option>
+                <option value="sonstiges">Sonstiges</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="nachricht">NACHRICHT *</label>
+              <textarea class="form-textarea" id="nachricht" name="nachricht" placeholder="Erzähl mir von deinem Projekt …" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-filled form-submit">NACHRICHT SENDEN →</button>
+            <p class="form-note">{{ d.formular.hinweis }}</p>
+          </form>
+        </div>
+        {% endif %}
+
+        <div>
+          <div class="andere-wege-eyebrow"><span class="section-eyebrow">ANDERE WEGE</span></div>
+
+          <div class="kontakt-block">
+            <div class="kontakt-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+            <div>
+              <div class="kontakt-info-title">E-MAIL</div>
+              <div class="kontakt-info-value"><a href="mailto:{{ f.email }}" style="color:var(--gold);">{{ f.email }}</a></div>
+              <div class="kontakt-info-sub">Ich antworte in der Regel innerhalb von 24 Stunden.</div>
+            </div>
+          </div>
+
+          <div class="kontakt-block">
+            <div class="kontakt-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div>
+              <div class="kontakt-info-title">TELEFON / WHATSAPP</div>
+              <div class="kontakt-info-value">{{ d.andere_wege.telefon_hinweis }}</div>
+            </div>
+          </div>
+
+          <div class="kontakt-block">
+            <div class="kontakt-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <div class="kontakt-info-title">STANDORT</div>
+              <div class="kontakt-info-value">{{ f.ort }}, Deutschland</div>
+              <div class="kontakt-info-sub">{{ d.andere_wege.standort_hinweis }}</div>
+            </div>
+          </div>
+
+          {% if site.data.settings.instagram_handle and site.data.settings.instagram_handle != "" %}
+          <div class="kontakt-block">
+            <div class="kontakt-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
+            <div>
+              <div class="kontakt-info-title">INSTAGRAM</div>
+              <div class="kontakt-info-value"><a href="{{ site.data.settings.instagram_url }}" style="color:var(--gold);" target="_blank" rel="noopener noreferrer">{{ site.data.settings.instagram_handle }}</a></div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="karte-section" aria-label="Standort {{ f.ort }}">
+    <div class="container">
+      <div class="karte-placeholder reveal" role="img" aria-label="Standort {{ f.ort }} – {{ f.name }}, {{ f.strasse }}, {{ f.plz }} {{ f.ort }}">
+        <div class="karte-pin" aria-hidden="true">
+          <div class="karte-pin-dot"></div>
+          <div class="karte-pin-label">{{ f.name }} · {{ f.ort }}</div>
+        </div>
+        <div class="karte-attribution" aria-hidden="true">© OpenStreetMap-Mitwirkende</div>
+      </div>
+    </div>
+  </section>
+
+  {% if d.faq.size > 0 %}
+  <section class="faq-section" aria-label="Häufige Fragen">
+    <div class="container">
+      <div class="faq-header reveal">
+        <span class="section-eyebrow">HÄUFIGE FRAGEN</span>
+        <h2 class="section-headline">Häufige Fragen</h2>
+      </div>
+      <div class="faq-list reveal">
+        {% for item in d.faq %}
+        <details class="faq-item">
+          <summary class="faq-question">{{ item.frage }}
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <p class="faq-answer">{{ item.antwort }}</p>
+        </details>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="cta-banner-split" aria-label="Projekt starten">
+    <div class="cta-split-inner">
+      <div class="cta-split-img"><img src="{{ d.cta.bild | relative_url }}" alt="" loading="lazy" width="800" height="640"></div>
+      <div class="cta-split-text reveal">
+        <h2 class="section-headline">{{ d.cta.headline }}</h2>
+        <p class="cta-split-sub">{{ d.cta.text }}</p>
+        <div><a href="#formular" class="btn btn-filled">JETZT ANFRAGEN →</a></div>
+      </div>
+    </div>
+  </section>
+
+{% when 'portfolio-index' %}
+  {% assign alle_projekte = site.projekte | where_exp: "p", "p.published" | sort: "reihenfolge" %}
+  <section class="section reveal">
+    <div class="wrap">
+      <h1>{{ page.title }}</h1>
+      {% if alle_projekte.size > 0 %}
+      <div class="projekt-grid" style="margin-top:2rem;">
+        {% for p in alle_projekte %}{% include projekt-card.html projekt=p %}{% endfor %}
+      </div>
+      {% else %}
+      <p>Aktuell sind noch keine Projekte veröffentlicht.</p>
+      {% endif %}
+    </div>
+  </section>
+
+{% when 'projekt' %}
+  {% case page.kategorie %}
+    {% when 'hochzeit' %}{% assign kat = 'Hochzeit' %}
+    {% when 'event' %}{% assign kat = 'Event' %}
+    {% when 'commercial' %}{% assign kat = 'Commercial' %}
+    {% else %}{% assign kat = page.kategorie %}
+  {% endcase %}
+  <section class="section reveal">
+    <div class="wrap wrap--narrow">
+      <p class="projekt-detail__badge">{{ kat }}</p>
+      <h1>{{ page.title }}</h1>
+      {% include video.html url=page.video_url poster=page.vorschaubild title=page.title eager=true %}
+      <p class="projekt-detail__beschreibung">{{ page.beschreibung }}</p>
+      <p><a class="link-arrow" href="{{ '/portfolio/' | relative_url }}">← Zurück zum Portfolio</a></p>
+    </div>
+  </section>
+
+{% when 'blog-index' %}
+  <section class="section">
+    <div class="wrap">
+      <h1>{{ page.title }}</h1>
+      {% if site.posts.size > 0 %}
+      <div class="post-list">
+        {% for post in site.posts %}
+        <article class="post-list__item">
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <p class="post-list__date">{{ post.date | date: "%d.%m.%Y" }}</p>
+          {% if post.excerpt %}<p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>{% endif %}
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>Aktuell gibt es noch keine Beiträge.</p>
+      {% endif %}
+    </div>
+  </section>
+
+{% when 'post' %}
+  <section class="section">
+    <div class="wrap wrap--narrow">
+      <h1>{{ page.title }}</h1>
+      <p class="post-list__date">{{ page.date | date: "%d.%m.%Y" }}</p>
+      {{ content }}
+    </div>
+  </section>
+
+{% else %}
+  <section class="section">
+    <div class="wrap wrap--narrow">
+      <h1>{{ page.title }}</h1>
+      {{ content }}
+    </div>
+  </section>
+
+{% endcase %}
+</main>
+
+<footer aria-label="Seitenfooter">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">{{ f.name | split: ' ' | first | upcase }}<span>{{ f.name | split: ' ' | last | upcase }}</span></div>
+        <p class="footer-slogan">{{ f.slogan }}</p>
+        <nav class="social-row" aria-label="Social Media">
+          {% if site.data.settings.instagram_url and site.data.settings.instagram_url != "" %}
+          <a href="{{ site.data.settings.instagram_url }}" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="15" height="15"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          {% endif %}
+          {% if site.data.settings.vimeo_url and site.data.settings.vimeo_url != "" %}
+          <a href="{{ site.data.settings.vimeo_url }}" class="social-icon" aria-label="Vimeo" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="15" height="15"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.612-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.478 4.807z"/></svg>
+          </a>
+          {% endif %}
+          {% if site.data.settings.youtube_url and site.data.settings.youtube_url != "" %}
+          <a href="{{ site.data.settings.youtube_url }}" class="social-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="15" height="15"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          </a>
+          {% endif %}
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4>NAVIGATION</h4>
+        <ul>
+          {% for item in header_nav %}<li><a href="{{ item.url | relative_url }}">{{ item.nav_label }}</a></li>{% endfor %}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>KONTAKT</h4>
+        <address>
+          {% if f.ansprechpartner and f.ansprechpartner != "" %}{{ f.ansprechpartner }}<br>{% endif %}
+          {{ f.strasse }}<br>
+          {{ f.plz }} {{ f.ort }}<br><br>
+          <a href="mailto:{{ f.email }}" style="color:var(--gold);">Anfrage per E-Mail</a>
+        </address>
+      </div>
+
+      <div class="footer-col">
+        <h4>RECHTLICHES</h4>
+        <ul>
+          {% for item in footer_nav %}<li><a href="{{ item.url | relative_url }}">{{ item.nav_label }}</a></li>{% endfor %}
+        </ul>
+        <div style="margin-top:28px;">
+          <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-filled" style="font-size:0.68rem;padding:12px 20px;">ANFRAGE STARTEN</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ f.name | upcase }}{% if f.ansprechpartner and f.ansprechpartner != "" %} – {{ f.ansprechpartner }}{% endif %}</p>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
+
