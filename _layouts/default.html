@@ -37,7 +37,7 @@
 <header>
   <nav class="nav" aria-label="Hauptnavigation">
     <a href="{{ '/' | relative_url }}" class="nav-logo" aria-label="{{ f.name }} Startseite">
-      {{ f.name | split: ' ' | first | upcase }}<span>{{ f.name | split: ' ' | last | upcase }}</span>
+      <img class="nav-logo__img" src="{{ '/assets/logo-wordmark.png' | relative_url }}" alt="{{ f.name }}" width="640" height="176">
     </a>
     <ul class="nav-links" role="list">
       {% for item in header_nav %}
@@ -779,7 +779,7 @@
   <div class="container">
     <div class="footer-top">
       <div>
-        <div class="footer-logo">{{ f.name | split: ' ' | first | upcase }}<span>{{ f.name | split: ' ' | last | upcase }}</span></div>
+        <div class="footer-logo"><img class="footer-logo__img" src="{{ '/assets/logo-wordmark.png' | relative_url }}" alt="{{ f.name }}" width="640" height="176"></div>
         <p class="footer-slogan">{{ f.slogan }}</p>
         <nav class="social-row" aria-label="Social Media">
           {% if site.data.settings.instagram_url and site.data.settings.instagram_url != "" %}

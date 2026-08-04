@@ -725,3 +725,7 @@ details[open] .faq-chevron { transform: rotate(180deg); }
   .stats-grid { grid-template-columns: 1fr; }
   .kamera-grid { grid-template-columns: 1fr; }
 }
+
+/* Logo-Bild (echte Wortmarke, transparent freigestellt) */
+.nav-logo__img { height: 34px; width: auto; display: block; }
+.footer-logo__img { height: 30px; width: auto; display: block; }
