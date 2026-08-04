@@ -135,7 +135,7 @@ content:
           - name: bild
             label: "Hero-Bild"
             type: image
-            required: true
+            required: false
       - name: kategorien
         label: "Leistungs-Kategorien (3 Karten)"
         type: object
@@ -156,7 +156,7 @@ content:
           - name: bild
             label: "Bild"
             type: image
-            required: true
+            required: false
       - name: ueber_mich
         label: "Über mich (Kurzfassung für die Startseite)"
         type: object
@@ -164,7 +164,7 @@ content:
           - name: foto
             label: "Foto"
             type: image
-            required: true
+            required: false
           - name: text
             label: "Text"
             type: text
@@ -220,7 +220,7 @@ content:
           - name: bild
             label: "Hero-Bild"
             type: image
-            required: true
+            required: false
       - name: feature
         label: "Video-Block"
         type: object
@@ -244,7 +244,7 @@ content:
           - name: bild
             label: "Vorschaubild"
             type: image
-            required: true
+            required: false
       - name: werte
         label: "Werte (4 Kacheln)"
         type: object
@@ -273,7 +273,7 @@ content:
           - name: bild
             label: "Bild"
             type: image
-            required: true
+            required: false
 
   # --- Events (_data/events.yml) ---
   - name: events
@@ -300,7 +300,7 @@ content:
           - name: bild
             label: "Hero-Bild"
             type: image
-            required: true
+            required: false
       - name: feature
         label: "Video-Block"
         type: object
@@ -324,7 +324,7 @@ content:
           - name: bild
             label: "Vorschaubild"
             type: image
-            required: true
+            required: false
       - name: kategorien
         label: "Event-Kategorien (5 Karten)"
         type: object
@@ -362,7 +362,7 @@ content:
           - name: bild
             label: "Hintergrundbild"
             type: image
-            required: true
+            required: false
 
   # --- Commercials (_data/commercials.yml) ---
   - name: commercials
@@ -389,7 +389,7 @@ content:
           - name: bild
             label: "Hero-Bild"
             type: image
-            required: true
+            required: false
       - name: feature
         label: "Video-Block"
         type: object
@@ -417,7 +417,7 @@ content:
           - name: bild
             label: "Vorschaubild"
             type: image
-            required: true
+            required: false
       - name: formate
         label: "Formate (5 Kacheln)"
         type: object
@@ -459,7 +459,7 @@ content:
           - name: bild
             label: "Hintergrundbild"
             type: image
-            required: true
+            required: false
 
   # --- Über mich (_data/ueber-mich.yml) ---
   - name: ueber_mich_seite
@@ -482,7 +482,7 @@ content:
           - name: bild
             label: "Hero-Bild"
             type: image
-            required: true
+            required: false
       - name: story
         label: "Meine Geschichte"
         type: object
@@ -494,7 +494,7 @@ content:
           - name: portraet
             label: "Portrait"
             type: image
-            required: true
+            required: false
           - name: text
             label: "Textabsätze"
             type: text
@@ -569,7 +569,7 @@ content:
           - name: bild
             label: "Hero-Bild"
             type: image
-            required: true
+            required: false
       - name: formular
         label: "Formular-Texte"
         type: object
@@ -630,7 +630,7 @@ content:
           - name: bild
             label: "Bild"
             type: image
-            required: true
+            required: false
 
   # --- Die 6 Kernseiten selbst: Titel/Beschreibung/Darstellung (warm/hell/dunkel) ---
   - name: seite_home
@@ -717,7 +717,7 @@ content:
       - name: vorschaubild
         label: "Vorschaubild"
         type: image
-        required: true
+        required: false
         description: "Pflichtfeld — wird als Kartenbild und als Video-Vorschaubild genutzt (auch bei YouTube, aus DSGVO-Gründen kein Thumbnail von externen Servern vor dem Klick)."
       - name: beschreibung
         label: "Kurzbeschreibung"
