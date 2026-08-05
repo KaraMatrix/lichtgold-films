@@ -3,14 +3,14 @@ hero:
   eyebrow: Eventfilme
   headline: Momente, die verbinden. Events, die bewegen.
   subline: Wir fangen die Energie, Emotion und Exklusivität eurer Events ein – cinematisch, authentisch und professionell.
-  bild: /assets/uploads/events-hero.svg
+  bild: /assets/uploads/events-hero.jpg
 
 feature:
   lead: Eure Eventfilme, authentisch & dynamisch.
   headline: Mehr als eine Dokumentation. Ein Film, der eure Marke stärkt.
   text: Von der ersten Aufnahme bis zum finalen Schnitt – wir verstehen Events als das, was sie sind – einmalige Momente mit Botschaft. Unser Team arbeitet diskret und effizient im Hintergrund, damit der Abend für euch und eure Gäste unvergesslich bleibt.
   video_url: ""
-  bild: /assets/uploads/events-video.svg
+  bild: /assets/uploads/events-video.jpg
 
 # Statische Service-Kategorien (kein Portfolio-Bezug — im Quell-Design ohne Fotos, nur Icon+Text).
 kategorien:
@@ -37,4 +37,4 @@ usps:
 
 cta:
   headline: Lasst uns euer nächstes Event unvergesslich machen.
-  bild: /assets/uploads/events-cta.svg
+  bild: /assets/uploads/events-cta.jpg

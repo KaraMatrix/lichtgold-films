@@ -3,14 +3,14 @@ hero:
   eyebrow: Hochzeitsfilme & Videografie
   headline: Echte Momente. Für die Ewigkeit.
   subline: Hochzeitsfilme, Events & Commercials in Berlin und weltweit.
-  bild: /assets/uploads/hochzeiten-hero.svg
+  bild: /assets/uploads/hochzeiten-hero.jpg
 
 feature:
   eyebrow: Eure Geschichte, echt erzählt
   headline: Hochzeitsfilme, die fühlen.
   text: Jede Hochzeit ist einzigartig – und genau so soll euer Film sein. Wir begleiten euch unauffällig, fangen die großen Emotionen und die kleinen Augenblicke ein, die oft niemand bemerkt. Erinnerungen, die bleiben.
   video_url: ""
-  bild: /assets/uploads/hochzeiten-video.svg
+  bild: /assets/uploads/hochzeiten-video.jpg
 
 werte:
   - titel: Emotional & echt
@@ -25,4 +25,4 @@ werte:
 cta:
   headline: Lasst uns eure Geschichte erzählen.
   text: Ich freue mich darauf, euch kennenzulernen und mehr über eure Pläne zu erfahren.
-  bild: /assets/uploads/hochzeiten-cta.svg
+  bild: /assets/uploads/hochzeiten-cta.jpg

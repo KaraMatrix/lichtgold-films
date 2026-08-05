@@ -1,27 +1,31 @@
+# Editierbare Inhalts-Sektionen der Startseite (Theme: hell). Entspricht 1:1 den
+# Sektionen der Quell-Seite index.html: Hero, 3 Leistungs-Kategorien, Über mich,
+# Film-Galerie (aus _projekte/), CTA-Banner. Getrennt von settings.yml (nur
+# Firmen-/Kontaktdaten) — siehe SoC-Hinweis im README.
 hero:
   eyebrow: Filme voller
-  headline: Licht.<br>Gefühl.<br>Erinnerung.
-  subline: Hochzeitsfilme, Eventfilme und Commercials – mit Herz, Ästhetik und
-    einem Blick für das Wesentliche.
+  headline: "Licht.<br>Gefühl.<br>Erinnerung."
+  subline: Hochzeitsfilme, Eventfilme und Commercials – mit Herz, Ästhetik und einem Blick für das Wesentliche.
+  video_url: ""
   bild: /assets/uploads/home-hero.jpg
+
 kategorien:
   - name: Hochzeiten
     text: Echte Momente. Für die Ewigkeit.
     url: /hochzeiten/
+    bild: /assets/uploads/home-kat-hochzeiten.jpg
   - name: Events
     text: Momente, die verbinden.
     url: /events/
+    bild: /assets/uploads/home-kat-events.jpg
   - name: Commercials
     text: Starke Bilder. Starke Marken.
     url: /commercials/
+    bild: /assets/uploads/home-kat-commercials.jpg
+
 ueber_mich:
-  foto: /assets/uploads/portrait-placeholder.svg
-  text: Als Filmemacher aus Berlin begleite ich Paare an ihrem besonderen Tag,
-    dokumentiere Events, die bewegen, und übersetze Markenbotschaften in
-    cineastische Bilder. Mein Antrieb – jeder Moment verdient einen Film, der in
-    Erinnerung bleibt. Ob elegante Hochzeit, dynamisches Firmen-Event oder
-    aufmerksamkeitsstarker Werbespot – ich bringe Leidenschaft, handwerkliches
-    Können und einen ehrlichen Blick für das Wesentliche mit.
+  foto: /assets/uploads/ueber-mich-hero.jpg
+  text: Als Filmemacher aus Berlin begleite ich Paare an ihrem besonderen Tag, dokumentiere Events, die bewegen, und übersetze Markenbotschaften in cineastische Bilder. Mein Antrieb – jeder Moment verdient einen Film, der in Erinnerung bleibt. Ob elegante Hochzeit, dynamisches Firmen-Event oder aufmerksamkeitsstarker Werbespot – ich bringe Leidenschaft, handwerkliches Können und einen ehrlichen Blick für das Wesentliche mit.
   stats:
     - wert: 5+
       label: Jahre Erfahrung
@@ -35,6 +39,7 @@ ueber_mich:
       label: "& International"
     - wert: Hochwertig
       label: Filme
+
 cta:
   headline: Jeder Film beginnt mit einer Geschichte.
   sub: Vielleicht ist die nächste eure.

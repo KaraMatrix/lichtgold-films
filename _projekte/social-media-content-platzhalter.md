@@ -2,7 +2,7 @@
 title: "Social Media Content – Platzhalterprojekt"
 kategorie: commercial
 video_url: ""
-vorschaubild: /assets/uploads/projekt-imagefilm.svg
+vorschaubild: /assets/uploads/projekt-social-media.jpg
 beschreibung: >
   Platzhalter-Projekt (Bild ohne Video) - zeigt die Kartenansicht der
   Commercials-Galerie mit einem zusätzlichen Eintrag. Wird vor Livegang durch

@@ -2,7 +2,7 @@
 title: Standesamtliche Trauung im Sommer
 kategorie: hochzeit
 video_url: ""
-vorschaubild: /assets/uploads/projekt-hochzeit.svg
+vorschaubild: /assets/uploads/projekt-standesamt.jpg
 beschreibung: >
   Platzhalter-Projekt (Bild ohne Video) - zeigt die Kartenansicht der
   Hochzeitsfilme-Galerie mit einem zusätzlichen Eintrag. Wird vor Livegang

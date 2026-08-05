@@ -2,7 +2,7 @@
 title: Waldhochzeit im Morgenlicht
 kategorie: hochzeit
 video_url: ""
-vorschaubild: /assets/uploads/projekt-hochzeit.svg
+vorschaubild: /assets/uploads/projekt-waldhochzeit.jpg
 beschreibung: >
   Eine kleine Trauung im Wald bei Potsdam, gedreht im ersten Licht des Morgens.
   Platzhalter-Projekt ohne Video — zeigt, wie ein Projekt ohne hinterlegten

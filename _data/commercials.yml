@@ -3,7 +3,7 @@ hero:
   eyebrow: Commercial Films
   headline: "Starke Bilder.<br>Starke Marken."
   subline: Imagefilme, Werbespots und Corporate Films – kreativ konzipiert, professionell produziert, mit Wirkung.
-  bild: /assets/uploads/commercials-hero.svg
+  bild: /assets/uploads/commercials-hero.jpg
 
 feature:
   lead: Filme, die Wirkung zeigen.
@@ -15,7 +15,7 @@ feature:
     - Kinoqualität für Web, TV & Social Media
     - Zuverlässig, effizient & zielgerichtet
   video_url: ""
-  bild: /assets/uploads/commercials-video.svg
+  bild: /assets/uploads/commercials-video.jpg
 
 # Statische Formate (kein Portfolio-Bezug — im Quell-Design ohne Fotos, nur Icon+Text).
 formate:
@@ -43,4 +43,4 @@ prozess:
 cta:
   headline: Bereit für deinen nächsten Film?
   text: Lass uns gemeinsam deine Marke in Bewegung bringen.
-  bild: /assets/uploads/commercials-cta.svg
+  bild: /assets/uploads/commercials-cta.jpg

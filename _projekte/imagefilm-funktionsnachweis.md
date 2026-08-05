@@ -2,7 +2,7 @@
 title: "Imagefilm – Funktionsnachweis Video-Player"
 kategorie: commercial
 video_url: "https://www.youtube.com/watch?v=eRsGyueVLvQ"
-vorschaubild: /assets/uploads/projekt-imagefilm.svg
+vorschaubild: /assets/uploads/projekt-imagefilm.jpg
 beschreibung: >
   Technischer Funktionsnachweis der Klick-zum-Laden-Videoeinbindung anhand eines
   echten, frei lizenzierten Demo-Films ("Sintel", Blender Foundation, CC BY).

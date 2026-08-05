@@ -2,7 +2,7 @@
 hero:
   headline: Lass uns dein Projekt verwirklichen.
   text: Du hast eine Idee, ein Event oder möchtest mehr über eine Zusammenarbeit erfahren? Ich freue mich darauf, von dir zu hören.
-  bild: /assets/uploads/kontakt-hero.svg
+  bild: /assets/uploads/kontakt-hero.jpg
 
 formular:
   eyebrow: Schreib mir
@@ -29,4 +29,4 @@ faq:
 cta:
   headline: Bereit, deine Geschichte zum Leben zu erwecken?
   text: Ich begleite dich von der ersten Idee bis zum finalen Film – authentisch, emotional und mit Liebe zum Detail.
-  bild: /assets/uploads/kontakt-cta.svg
+  bild: /assets/uploads/kontakt-cta.jpg

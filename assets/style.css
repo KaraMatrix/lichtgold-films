@@ -84,9 +84,26 @@
   --burger-color: var(--text-dark);
   --overlay-bg: var(--cream);
   --overlay-link-color: var(--text-dark);
+  /* --hero-overlay-* wird NUR von der Startseite (.hero, Theme "warm" erbt diese Tokens,
+     da [data-theme="warm"] sie nicht überschreibt) konsumiert — Hochzeiten/Über-mich/Kontakt
+     nutzen .page-hero (Split-Layout, kein Overlay). Gemessen an 33.png (Python/PIL,
+     vertikale Spalten-Stichproben x=430/610, Hero-Span y≈40–324px von 1024px Bildhöhe,
+     Hero-Unterkante per Varianz-Scan lokalisiert): Helligkeit am Hero-Boden (y≈296–320,
+     ~150–220) liegt in ähnlicher Größenordnung wie am Hero-Kopf (y≈40–86, ~180–250) —
+     im MOCKUP kein durchgängiges Abdunkeln zur Unterkante hin (dort sitzt die Headline
+     zudem auf dunklem Text statt auf Weiß). Die alten Werte (o1=0.72/o2=0.25) waren dafür
+     unbelegt zu stark. ABER: `.hero-headline`/`.hero-sub` sind hart auf Weiß gesetzt
+     (Layout-Entscheidung außerhalb dieses Scopes) — am gerenderten Foto (home-hero.jpg,
+     Pexels) liegt die Textzone bei ~rgb(190–220), was Weiß-auf-Hell mit den zunächst
+     gewählten sehr niedrigen Werten (o1 0.3/o2 0.1) auf ein WCAG-Kontrastverhältnis nahe
+     1:1 gedrückt hätte (per Chrome-Headless-Screenshot nachgemessen) — unlesbar. Finaler
+     Kompromiss aus Mockup-Messung (schwächer als Original) und Lesbarkeits-Pflicht
+     (A11y geht vor Pixel-Treue): o1/o2 so gesetzt, dass die Hintergrund-Luminanz hinter
+     der Textzone rechnerisch unter den für 4,5:1-Kontrast nötigen Grauwert (~119/255)
+     fällt. RGB-Ton unverändert (warmes Beinahe-Schwarz). */
   --hero-overlay-rgb: 10, 6, 2;
-  --hero-overlay-o1: 0.72;
-  --hero-overlay-o2: 0.25;
+  --hero-overlay-o1: 0.68;
+  --hero-overlay-o2: 0.52;
   --hero-sub-color: rgba(255, 255, 255, 0.8);
   --feature-text-color: var(--text-mid);
 }
@@ -110,6 +127,11 @@
   --burger-color: #fff;
   --overlay-bg: var(--dark-mid);
   --overlay-link-color: #e0d8c8;
+  /* Gemessen an 31.png (Events) und 32.png (Commercials): Spalten-Stichproben über den
+     kompletten Hero-Span zeigen durchgängig nahezu Schwarz (rgb ~0–20) von Hero-Kopf bis
+     -Boden, ohne erkennbaren Hell-Dunkel-Verlauf — die Rohfotos (Bühnenlicht/Studio) sind
+     bereits selbst sehr dunkel, daher von der Messung nicht von einem Overlay-Verlauf zu
+     unterscheiden. Werte bestätigt plausibel, unverändert gelassen. */
   --hero-overlay-rgb: 5, 5, 5;
   --hero-overlay-o1: 0.85;
   --hero-overlay-o2: 0.3;
@@ -513,6 +535,10 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
 .cta-section { position: relative; overflow: hidden; }
 .cta-bg { position: absolute; inset: 0; z-index: 0; }
 .cta-bg img { width: 100%; height: 100%; object-fit: cover; }
+/* Gemessen an den CTA-Bändern von 31.png (y≈824–914) und 32.png (y≈906–976): Werte bleiben
+   über die gesamte Bandhöhe durchgängig dunkel (Mittel ~15–59), ohne monotonen Verlauf von
+   oben nach unten — bestätigt eine FLÄCHIGE Abdunkelung statt eines Verlaufs. rgba(5,5,5,0.65)
+   bestätigt plausibel, unverändert gelassen. */
 .cta-overlay { position: absolute; inset: 0; background: rgba(5,5,5,0.65); z-index: 1; }
 .cta-content { position: relative; z-index: 2; text-align: center; }
 .cta-content .section-headline { margin-bottom: 28px; font-size: clamp(1.8rem, 4vw, 3rem); color: #fff; }

@@ -2,11 +2,11 @@
 hero:
   headline: Videograf aus Leidenschaft.
   text: Geschichten, die berühren. Bilder, die bleiben. Ich begleite Hochzeiten, Events und Unternehmen und sorge dafür, dass echte Emotionen in zeitlosen Filmen festgehalten werden.
-  bild: /assets/uploads/ueber-mich-hero.svg
+  bild: /assets/uploads/ueber-mich-hero.jpg
 
 story:
   headline: Wie alles begann.
-  portraet: /assets/uploads/ueber-mich-story.svg
+  portraet: /assets/uploads/ueber-mich-story.jpg
   text:
     - Schon immer haben mich Filme und Emotionen fasziniert. Mit 17 habe ich meine erste Kamera in die Hand genommen und gemerkt – das ist mehr als ein Hobby, das ist meine Leidenschaft.
     - Heute habe ich das Privileg, Menschen an den wichtigsten Tagen ihres Lebens zu begleiten und für Unternehmen starke visuelle Geschichten zu erzählen.
@@ -33,11 +33,11 @@ ansatz:
     text: Von der Planung bis zum finalen Film lege ich Wert auf höchste Qualität und Detail.
 
 kamera_bilder:
-  - /assets/uploads/ueber-mich-kamera-1.svg
-  - /assets/uploads/ueber-mich-kamera-2.svg
-  - /assets/uploads/ueber-mich-kamera-3.svg
-  - /assets/uploads/ueber-mich-kamera-4.svg
-  - /assets/uploads/ueber-mich-kamera-5.svg
+  - /assets/uploads/ueber-mich-kamera-1.jpg
+  - /assets/uploads/ueber-mich-kamera-2.jpg
+  - /assets/uploads/ueber-mich-kamera-3.jpg
+  - /assets/uploads/ueber-mich-kamera-4.jpg
+  - /assets/uploads/ueber-mich-kamera-5.jpg
 
 ausruestung:
   - Sony FX3
