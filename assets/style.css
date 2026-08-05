@@ -86,21 +86,15 @@
   --overlay-link-color: var(--text-dark);
   /* --hero-overlay-* wird NUR von der Startseite (.hero, Theme "warm" erbt diese Tokens,
      da [data-theme="warm"] sie nicht überschreibt) konsumiert — Hochzeiten/Über-mich/Kontakt
-     nutzen .page-hero (Split-Layout, kein Overlay). Gemessen an 33.png (Python/PIL,
-     vertikale Spalten-Stichproben x=430/610, Hero-Span y≈40–324px von 1024px Bildhöhe,
-     Hero-Unterkante per Varianz-Scan lokalisiert): Helligkeit am Hero-Boden (y≈296–320,
-     ~150–220) liegt in ähnlicher Größenordnung wie am Hero-Kopf (y≈40–86, ~180–250) —
-     im MOCKUP kein durchgängiges Abdunkeln zur Unterkante hin (dort sitzt die Headline
-     zudem auf dunklem Text statt auf Weiß). Die alten Werte (o1=0.72/o2=0.25) waren dafür
-     unbelegt zu stark. ABER: `.hero-headline`/`.hero-sub` sind hart auf Weiß gesetzt
-     (Layout-Entscheidung außerhalb dieses Scopes) — am gerenderten Foto (home-hero.jpg,
-     Pexels) liegt die Textzone bei ~rgb(190–220), was Weiß-auf-Hell mit den zunächst
-     gewählten sehr niedrigen Werten (o1 0.3/o2 0.1) auf ein WCAG-Kontrastverhältnis nahe
-     1:1 gedrückt hätte (per Chrome-Headless-Screenshot nachgemessen) — unlesbar. Finaler
-     Kompromiss aus Mockup-Messung (schwächer als Original) und Lesbarkeits-Pflicht
-     (A11y geht vor Pixel-Treue): o1/o2 so gesetzt, dass die Hintergrund-Luminanz hinter
-     der Textzone rechnerisch unter den für 4,5:1-Kontrast nötigen Grauwert (~119/255)
-     fällt. RGB-Ton unverändert (warmes Beinahe-Schwarz). */
+     nutzen .page-hero (Split-Layout, kein Overlay). home-hero.jpg (Stand 08/26: helles,
+     warmes Gegenlicht-Brautpaar, Pexels 38679488) ist deutlich heller als das vorherige
+     Foto — per Chrome-Headless-Screenshot (1280x1400) + Python/PIL an der ECHTEN Text-
+     spalte nachgemessen (nicht nur Stichproben daneben): Hintergrund-Luminanz hinter der
+     Headline liegt bei rgb~(86–99), Kontrast Weiß-auf-Hintergrund 6,7–8,0:1 (Headline
+     braucht als Large Text nur 3:1, Sub-Headline bei rgba(255,255,255,0.8)-Blend ~5:1
+     bei 4,5:1-Pflicht) — der bestehende dunkle Overlay (o1/o2 unten) reicht für dieses
+     Foto bereits aus, KEINE Anpassung nötig. Bei künftigem Foto-Tausch hier erneut messen,
+     nicht annehmen. */
   --hero-overlay-rgb: 10, 6, 2;
   --hero-overlay-o1: 0.68;
   --hero-overlay-o2: 0.52;

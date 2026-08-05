@@ -4,7 +4,7 @@ Alle Fotos stammen von [pexels.com](https://www.pexels.com) (Pexels-Lizenz — k
 Nutzung, keine Namensnennung verpflichtend, hier trotzdem dokumentiert). Jede Zeile: Slot-Datei | Pexels-URL | Fotograf.
 
 ## Home (_data/startseite.yml)
-- `home-hero.jpg` — https://www.pexels.com/photo/romantic-mountain-wedding-at-sunset-33123052/ — Alexander Mass (@rebornfilmes)
+- `home-hero.jpg` — https://www.pexels.com/photo/romantic-outdoor-wedding-couple-under-veil-38679488/ — Cansu Hangül
 - `home-kat-hochzeiten.jpg` — https://www.pexels.com/photo/bride-and-groom-holding-hands-9886678/ — Bimbim Sindu
 - `home-kat-events.jpg` — https://www.pexels.com/photo/elegant-candlelit-dinner-setting-with-twinkle-lights-30742025/ — Askin Polat
 - `home-kat-commercials.jpg` — https://www.pexels.com/photo/close-up-of-a-camera-17134771/ — Genie Music
@@ -18,10 +18,10 @@ Nutzung, keine Namensnennung verpflichtend, hier trotzdem dokumentiert). Jede Ze
 ## Events (_data/events.yml)
 - `events-hero.jpg` — https://www.pexels.com/photo/audience-on-a-concert-at-night-26447527/ — Noland Live
 - `events-video.jpg` — https://www.pexels.com/photo/lights-over-crowd-at-concert-5156622/ — Maor Attias
-- `events-cta.jpg` — https://www.pexels.com/photo/empty-interior-with-windows-18192420/ — Connor Scott McManus
+- `events-cta.jpg` — https://www.pexels.com/photo/illuminated-table-on-banquet-hall-18853305/ — Jonathan Borba (@jonathanborba)
 
 ## Commercials (_data/commercials.yml)
-- `commercials-hero.jpg` — https://www.pexels.com/photo/outline-of-a-white-car-in-a-dark-parking-garage-20790476/ — Hyundai Motor Group
+- `commercials-hero.jpg` — https://www.pexels.com/photo/professional-camera-rig-ready-for-filmmaking-35756536/ — Rene Strgar (@renestrgar)
 - `commercials-video.jpg` — https://www.pexels.com/photo/silhouette-of-man-on-mountain-peak-at-dusk-12737713/ — Keith Lobo (@k3ithvision)
 - `commercials-cta.jpg` — https://www.pexels.com/photo/3553622/ — Arun Kr (@arunkr)
 
