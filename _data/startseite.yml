@@ -4,7 +4,10 @@
 # Firmen-/Kontaktdaten) — siehe SoC-Hinweis im README.
 hero:
   eyebrow: Filme voller
-  headline: "Licht.<br>Gefühl.<br>Erinnerung."
+  headline: |-
+    Licht.
+    Gefühl.
+    Erinnerung.
   subline: Hochzeitsfilme, Eventfilme und Commercials – mit Herz, Ästhetik und einem Blick für das Wesentliche.
   video_url: ""
   bild: /assets/uploads/home-hero.jpg

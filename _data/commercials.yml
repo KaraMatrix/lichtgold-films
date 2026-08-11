@@ -1,7 +1,9 @@
 # Editierbare Inhalte der Seite /commercials/ (Theme: dunkel).
 hero:
   eyebrow: Commercial Films
-  headline: "Starke Bilder.<br>Starke Marken."
+  headline: |-
+    Starke Bilder.
+    Starke Marken.
   subline: Imagefilme, Werbespots und Corporate Films – kreativ konzipiert, professionell produziert, mit Wirkung.
   bild: /assets/uploads/commercials-hero.jpg
 

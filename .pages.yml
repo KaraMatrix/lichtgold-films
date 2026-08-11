@@ -200,9 +200,10 @@ content:
                     type: string
                     required: true
                   - name: headline
-                    label: "Headline (HTML-Zeilenumbrüche mit <br> möglich)"
-                    type: string
+                    label: "Headline"
+                    type: text
                     required: true
+                    description: "Enter = neue Zeile — jede Zeile erscheint auf der Website als eigene Zeile."
                   - name: subline
                     label: "Subline"
                     type: text
@@ -513,9 +514,10 @@ content:
                     type: string
                     required: true
                   - name: headline
-                    label: "Headline (HTML-Zeilenumbrüche mit <br> möglich)"
-                    type: string
+                    label: "Headline"
+                    type: text
                     required: true
+                    description: "Enter = neue Zeile — jede Zeile erscheint auf der Website als eigene Zeile."
                   - name: subline
                     label: "Subline"
                     type: text

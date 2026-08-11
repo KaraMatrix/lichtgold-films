@@ -72,7 +72,7 @@
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <span class="eyebrow reveal">{{ d.hero.eyebrow | upcase }}</span>
-      <h1 class="hero-headline reveal">{{ d.hero.headline }}</h1>
+      <h1 class="hero-headline reveal">{{ d.hero.headline | escape | newline_to_br }}</h1>
       <p class="hero-sub reveal">{{ d.hero.subline }}</p>
       <div class="hero-btns reveal">
         <a href="#galerie" class="btn btn-outline-dark">PORTFOLIO ANSEHEN</a>
@@ -178,7 +178,7 @@
     <div class="page-hero-inner">
       <div class="reveal">
         <span class="eyebrow">{{ d.hero.eyebrow | upcase }}</span>
-        <h1 class="page-hero-headline">{{ d.hero.headline }}</h1>
+        <h1 class="page-hero-headline">{{ d.hero.headline | escape | newline_to_br }}</h1>
         <p class="page-hero-sub">{{ d.hero.subline }}</p>
         <a href="#video-block" class="btn btn-outline">MEHR ERFAHREN →</a>
       </div>
@@ -268,7 +268,7 @@
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <span class="section-eyebrow reveal">{{ d.hero.eyebrow | upcase }}</span>
-      <h1 class="hero-headline reveal">{{ d.hero.headline }}</h1>
+      <h1 class="hero-headline reveal">{{ d.hero.headline | escape | newline_to_br }}</h1>
       <p class="hero-sub reveal">{{ d.hero.subline }}</p>
       <a href="#mehr" class="btn btn-outline reveal">MEHR ERFAHREN ↓</a>
     </div>
@@ -359,7 +359,7 @@
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <span class="section-eyebrow reveal">{{ d.hero.eyebrow | upcase }}</span>
-      <h1 class="hero-headline reveal">{{ d.hero.headline }}</h1>
+      <h1 class="hero-headline reveal">{{ d.hero.headline | escape | newline_to_br }}</h1>
       <p class="hero-sub reveal">{{ d.hero.subline }}</p>
       <a href="#mehr" class="btn btn-outline reveal">MEHR ERFAHREN ↓</a>
     </div>
@@ -464,7 +464,7 @@
     <div class="page-hero-inner">
       <div class="reveal">
         <span class="eyebrow">ÜBER MICH</span>
-        <h1 class="page-hero-headline">{{ d.hero.headline }}</h1>
+        <h1 class="page-hero-headline">{{ d.hero.headline | escape | newline_to_br }}</h1>
         <p class="page-hero-sub">{{ d.hero.text }}</p>
         <a href="#ansatz" class="btn btn-outline">MEHR ÜBER MEINEN ANSATZ →</a>
       </div>
@@ -562,7 +562,7 @@
     <div class="page-hero-inner">
       <div class="reveal">
         <span class="eyebrow">KONTAKT</span>
-        <h1 class="page-hero-headline">{{ d.hero.headline }}</h1>
+        <h1 class="page-hero-headline">{{ d.hero.headline | escape | newline_to_br }}</h1>
         <p class="page-hero-sub">{{ d.hero.text }}</p>
         <a href="#formular" class="btn btn-outline">ANFRAGE STARTEN →</a>
       </div>
