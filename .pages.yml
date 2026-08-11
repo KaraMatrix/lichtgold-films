@@ -30,6 +30,24 @@ components:
 
 content:
   # =====================================================================
+  # Anleitung — nur Ansicht (readonly), immer ganz oben
+  # =====================================================================
+  - name: anleitung
+    label: "📖 Erste Schritte"
+    type: file
+    path: ANLEITUNG.md
+    operations:
+      delete: false
+    fields:
+      - name: body
+        label: false
+        type: rich-text
+        readonly: true
+        options:
+          switcher: false
+          media: false
+
+  # =====================================================================
   # Allgemein
   # =====================================================================
   - name: allgemein
