@@ -808,7 +808,7 @@ content:
     operations:
       rename: false
     view:
-      fields: [title, kategorie, reihenfolge, published]
+      fields: [vorschaubild, title, kategorie, reihenfolge, published]
       primary: title
       sort: [reihenfolge, title]
       search: [title, beschreibung]
