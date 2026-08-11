@@ -135,7 +135,7 @@ Kernseite eine Datei, komplett über `.pages.yml` editierbar.
 
 1. Auf [pagescms.org](https://pagescms.org) mit GitHub einloggen, das
    Kunden-Repo auswählen. `.pages.yml` ist bereits vorkonfiguriert
-   (Website-Einstellungen, Navigation, Unterseiten, Blog).
+   (Webseiten-Einstellungen, Navigation, Unterseiten, Blog).
 2. **Collaborator einladen:** GitHub-Repo → Settings → Collaborators →
    Kunden-E-Mail einladen (Rolle: Write reicht, kein Admin nötig).
    Der Kunde bekommt eine E-Mail, akzeptiert die Einladung und kann sich

@@ -27,7 +27,7 @@ Hier bearbeiten Sie Ihre Website selbst — Texte, Bilder und Beiträge. Diese S
 
 ## Ihr Design — per Klick anpassbar
 
-Unter **Allgemein → Website-Einstellungen** bestimmen Sie das Erscheinungsbild. Jede Option ist geprüft — alles bleibt gut lesbar und sieht fertig aus:
+Unter **Allgemein → Webseiten-Einstellungen** bestimmen Sie das Erscheinungsbild. Jede Option ist geprüft — alles bleibt gut lesbar und sieht fertig aus:
 
 - **Formensprache** — alles klassisch eckig oder sanft abgerundet.
 - **Bildstimmung** — alle Fotos natürlich, warm getönt oder schwarzweiß.

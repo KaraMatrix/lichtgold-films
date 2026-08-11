@@ -54,9 +54,9 @@ content:
     label: "⚙️ Allgemein"
     type: group
     items:
-      # --- Website-Einstellungen: Firma/Kontakt (_data/settings.yml) ---
+      # --- Webseiten-Einstellungen: Firma/Kontakt (_data/settings.yml) ---
       - name: settings
-        label: "Website-Einstellungen"
+        label: "Webseiten-Einstellungen"
         type: file
         path: _data/settings.yml
         operations:
@@ -276,7 +276,7 @@ content:
                     label: "Google-Bewertung (z. B. 5,0)"
                     type: string
                     required: false
-                    description: "Leer lassen, um das Google-Badge auszublenden. Der Link kommt aus Website-Einstellungen → Google-Bewertungen."
+                    description: "Leer lassen, um das Google-Badge auszublenden. Der Link kommt aus Webseiten-Einstellungen → Google-Bewertungen."
                   - name: google_anzahl
                     label: "Anzahl der Bewertungen (optional, z. B. 27)"
                     type: string

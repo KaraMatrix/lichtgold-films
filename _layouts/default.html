@@ -681,12 +681,15 @@
   <section class="karte-faq-section" aria-label="Standort und häufige Fragen">
     <div class="container">
       <div class="karte-faq-inner">
-        <div class="karte-placeholder reveal" role="img" aria-label="Standort {{ f.ort | escape }} – {{ f.name | escape }}, {{ f.strasse | escape }}, {{ f.plz | escape }} {{ f.ort | escape }}">
+        {% capture route_ziel %}{{ f.strasse }}, {{ f.plz }} {{ f.ort }}{% endcapture %}
+        <div class="karte reveal">
+          <img class="karte-bild" src="{{ '/assets/karte.jpg' | relative_url }}" alt="Stadtplan: {{ f.strasse | escape }}, {{ f.plz | escape }} {{ f.ort | escape }}" loading="lazy" width="1120" height="840">
           <div class="karte-pin" aria-hidden="true">
             <div class="karte-pin-dot"></div>
             <div class="karte-pin-label">{{ f.name | escape }} · {{ f.ort | escape }}</div>
           </div>
-          <div class="karte-attribution" aria-hidden="true">© OpenStreetMap-Mitwirkende</div>
+          <a class="karte-route" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ route_ziel | url_encode }}" target="_blank" rel="noopener">Route planen</a>
+          <div class="karte-attribution">© OpenStreetMap-Mitwirkende</div>
         </div>
 
         {% if d.faq.size > 0 %}
