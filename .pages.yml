@@ -123,6 +123,41 @@ content:
                   label: "Klassisch eckig"
                 - name: abgerundet
                   label: "Sanft abgerundet"
+          - name: design_bildstimmung
+            label: "Bildstimmung"
+            type: select
+            default: natuerlich
+            description: "Farbstimmung aller Fotos und Video-Vorschauen."
+            options:
+              values:
+                - name: natuerlich
+                  label: "Natürlich"
+                - name: warm
+                  label: "Warm getönt"
+                - name: monochrom
+                  label: "Schwarzweiß"
+          - name: design_rhythmus
+            label: "Seitenrhythmus"
+            type: select
+            default: luftig
+            description: "Abstände zwischen den Abschnitten."
+            options:
+              values:
+                - name: luftig
+                  label: "Luftig"
+                - name: kompakt
+                  label: "Kompakt"
+          - name: design_bewegung
+            label: "Bewegung"
+            type: select
+            default: lebendig
+            description: "Sanfte Einblendungen beim Scrollen an oder aus."
+            options:
+              values:
+                - name: lebendig
+                  label: "Lebendige Einblendungen"
+                - name: ruhig
+                  label: "Ruhig (ohne Animationen)"
           - name: google_bewertung_url
             label: "Link zu Google-Bewertungen (optional)"
             type: string

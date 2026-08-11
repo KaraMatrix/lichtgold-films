@@ -278,7 +278,9 @@ a { color: inherit; text-decoration: none; }
 }
 .btn.btn-filled { background: var(--gold); color: var(--text-dark); }
 .btn.btn-filled:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--text-dark); }
-.btn-outline { background: transparent; color: var(--gold); }
+/* Kontrastfix: Gold-Text hielt auf hellen Flächen nur 2,6:1 — Textfarbe folgt
+   dem Theme (hell 15:1 / dunkel 7:1+), der Gold-Rand bleibt der Akzent. */
+.btn-outline { background: transparent; color: var(--page-text); }
 .btn-outline:hover { background: var(--gold); color: var(--text-dark); }
 .btn-outline-dark { background: transparent; color: var(--cream); border-color: var(--cream); }
 .btn-outline-dark:hover { background: var(--cream); color: var(--dark); }
@@ -459,6 +461,15 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
    Stattdessen die einfache, robuste Fade-Variante aus der Quelle (opacity + translateY). */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal--visible { opacity: 1; transform: none; }
+
+/* ===== KURATIERTE DESIGN-VARIANTEN (CMS: Website-Einstellungen) ===== */
+/* Bildstimmung — wirkt auf alle Foto-/Video-Flächen */
+.stil-bild-warm :is(.hero-bg, .cta-bg, .kat-card__bg, .page-hero-img, .ueber-portrait, .story-portrait, .kamera-img, .cta-split-img, .projekt-thumb, .video-embed) img,
+.stil-bild-warm .video-facade__poster { filter: sepia(0.18) saturate(1.15); }
+.stil-bild-mono :is(.hero-bg, .cta-bg, .kat-card__bg, .page-hero-img, .ueber-portrait, .story-portrait, .kamera-img, .cta-split-img, .projekt-thumb, .video-embed) img,
+.stil-bild-mono .video-facade__poster { filter: grayscale(1) contrast(1.05); }
+/* Bewegung "Ruhig" — identisch zu prefers-reduced-motion */
+.stil-ruhig .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   .video-facade__play { transition: none !important; }
