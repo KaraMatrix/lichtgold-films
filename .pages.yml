@@ -215,6 +215,16 @@ content:
                     type: text
                     required: true
                     description: "Enter = neue Zeile — jede Zeile erscheint auf der Website als eigene Zeile."
+                  - name: headline_layout
+                    label: "Headline-Anordnung"
+                    type: select
+                    default: buendig
+                    options:
+                      values:
+                        - name: buendig
+                          label: "Linksbündig"
+                        - name: treppe
+                          label: "Gestaffelt (Treppe)"
                   - name: subline
                     label: "Subline"
                     type: text

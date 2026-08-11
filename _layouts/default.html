@@ -77,7 +77,7 @@
       {%- comment -%} Initialen der ersten beiden Zeilen in Gold (L+G = Marken-Monogramm);
           Kontrast Gold auf Scrim-Fläche 4,7:1, Large Text braucht 3:1. {%- endcomment -%}
       {%- assign hl_zeilen = d.hero.headline | strip | newline_to_br | split: '<br />' -%}
-      <h1 class="hero-headline reveal">{% for hz in hl_zeilen %}{% assign hz_t = hz | strip %}{% if forloop.index <= 2 and hz_t != "" %}<span class="hl-initial">{{ hz_t | slice: 0 | escape }}</span>{{ hz_t | slice: 1, 500 | escape }}{% else %}{{ hz_t | escape }}{% endif %}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</h1>
+      <h1 class="hero-headline reveal hl-{{ d.hero.headline_layout | default: 'buendig' }}">{% for hz in hl_zeilen %}<span class="hl-zeile">{% assign hz_t = hz | strip %}{% if forloop.index <= 2 and hz_t != "" %}<span class="hl-initial">{{ hz_t | slice: 0 | escape }}</span>{{ hz_t | slice: 1, 500 | escape }}{% else %}{{ hz_t | escape }}{% endif %}</span>{% endfor %}</h1>
       <p class="hero-sub reveal">{{ d.hero.subline | escape }}</p>
       <div class="hero-btns reveal">
         <a href="#galerie" class="btn btn-outline-dark">PORTFOLIO ANSEHEN</a>
