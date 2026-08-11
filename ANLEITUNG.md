@@ -27,6 +27,7 @@ Hier bearbeiten Sie Ihre Website selbst — Texte, Bilder und Beiträge. Diese S
 Unter **Allgemein → Webseiten-Einstellungen** bestimmen Sie das Erscheinungsbild. Jede Option ist geprüft — alles bleibt gut lesbar und sieht fertig aus:
 
 - **Formensprache** — alles klassisch eckig oder sanft abgerundet.
+- **Karte anzeigen** — Stadtplan mit Standort und „Route planen" auf der Kontaktseite an- oder ausschalten.
 - **Bildstimmung** — alle Fotos natürlich, warm getönt oder schwarzweiß.
 - **Seitenrhythmus** — luftige oder kompakte Abstände.
 - **Bewegung** — sanfte Einblendungen beim Scrollen an oder aus.

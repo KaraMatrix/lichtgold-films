@@ -163,6 +163,11 @@ content:
             type: string
             required: false
             description: "Vollständige Adresse mit https:// — leer lassen, um den Bewertungs-Button auszublenden."
+          - name: karte_anzeigen
+            label: "Karte auf der Kontaktseite anzeigen"
+            type: boolean
+            default: true
+            description: "Stadtplan mit Ihrem Standort und Route-planen-Button. Ausschalten blendet die Karte aus."
           - name: instagram_handle
             label: "Instagram-Handle (optional, z. B. @firmenname)"
             type: string

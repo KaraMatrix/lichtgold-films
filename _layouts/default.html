@@ -678,9 +678,11 @@
     Karte + FAQ als EINE Zwei-Spalten-Zeile (Mockup: Karte links, FAQ rechts,
     nicht zwei separate volle Sektionen untereinander).
   {% endcomment %}
+  {% assign karte_an = true %}{% if site.data.settings.karte_anzeigen == false %}{% assign karte_an = false %}{% endif %}
   <section class="karte-faq-section" aria-label="Standort und häufige Fragen">
     <div class="container">
-      <div class="karte-faq-inner">
+      <div class="karte-faq-inner{% unless karte_an %} nur-faq{% endunless %}">
+        {% if karte_an %}
         {% capture route_ziel %}{{ f.strasse }}, {{ f.plz }} {{ f.ort }}{% endcapture %}
         <div class="karte reveal">
           <img class="karte-bild" src="{{ '/assets/karte.jpg' | relative_url }}" alt="Stadtplan: {{ f.strasse | escape }}, {{ f.plz | escape }} {{ f.ort | escape }}" loading="lazy" width="1120" height="840">
@@ -691,6 +693,7 @@
           <a class="karte-route" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ route_ziel | url_encode }}" target="_blank" rel="noopener">Route planen</a>
           <div class="karte-attribution">© OpenStreetMap-Mitwirkende</div>
         </div>
+        {% endif %}
 
         {% if d.faq.size > 0 %}
         <div class="faq-block reveal">

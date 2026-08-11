@@ -764,6 +764,8 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
 /* Karte (links) + FAQ (rechts) als eine Zeile - entspricht dem Kontakt-Mockup. */
 .karte-faq-section { background: var(--cream-dark); }
 .karte-faq-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
+/* Karte per CMS ausgeblendet: FAQ mittig in Lesebreite statt halbleerer Zeile. */
+.karte-faq-inner.nur-faq { grid-template-columns: 1fr; max-width: 720px; margin-inline: auto; }
 .karte {
   /* Verlauf bleibt als Hintergrund sichtbar, bis das Kartenbild geladen ist. */
   background: linear-gradient(160deg, #e8dcc8 0%, #d4c9a8 50%, #c4b890 100%);
