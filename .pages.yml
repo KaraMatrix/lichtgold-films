@@ -51,7 +51,7 @@ content:
   # Allgemein
   # =====================================================================
   - name: allgemein
-    label: "Allgemein"
+    label: "⚙️ Allgemein"
     type: group
     items:
       # --- Website-Einstellungen: Firma/Kontakt (_data/settings.yml) ---
@@ -176,12 +176,12 @@ content:
   # Seiten — je Seite: Inhalte + SEO & Darstellung
   # =====================================================================
   - name: seiten
-    label: "Seiten"
+    label: "📑 Seiten"
     type: group
     items:
       # ----------------------------- Startseite -----------------------------
       - name: gruppe_startseite
-        label: "Startseite"
+        label: "🏠 Startseite"
         type: group
         items:
           - name: startseite
@@ -311,7 +311,7 @@ content:
 
       # ----------------------------- Hochzeiten -----------------------------
       - name: gruppe_hochzeiten
-        label: "Hochzeiten"
+        label: "💍 Hochzeiten"
         type: group
         items:
           - name: hochzeiten
@@ -400,7 +400,7 @@ content:
 
       # ------------------------------- Events -------------------------------
       - name: gruppe_events
-        label: "Events"
+        label: "🎉 Events"
         type: group
         items:
           - name: events
@@ -494,7 +494,7 @@ content:
 
       # ---------------------------- Commercials -----------------------------
       - name: gruppe_commercials
-        label: "Commercials"
+        label: "🎬 Commercials"
         type: group
         items:
           - name: commercials
@@ -595,7 +595,7 @@ content:
 
       # ------------------------------ Über mich ------------------------------
       - name: gruppe_ueber_mich
-        label: "Über mich"
+        label: "👤 Über mich"
         type: group
         items:
           - name: ueber_mich_seite
@@ -696,7 +696,7 @@ content:
 
       # ------------------------------- Kontakt -------------------------------
       - name: gruppe_kontakt
-        label: "Kontakt"
+        label: "✉️ Kontakt"
         type: group
         items:
           - name: kontakt_seite
@@ -799,7 +799,7 @@ content:
   # Portfolio-Projekte (_projekte/)
   # =====================================================================
   - name: projekte
-    label: "Portfolio-Projekte"
+    label: "🎞️ Portfolio-Projekte"
     type: collection
     path: _projekte
     filename:
@@ -863,7 +863,7 @@ content:
   # Unterseiten, z. B. Impressum/Datenschutz (_pages/)
   # =====================================================================
   - name: pages
-    label: "Unterseiten"
+    label: "📄 Unterseiten"
     type: collection
     path: _pages
     filename:
@@ -923,7 +923,7 @@ content:
   # Blog (_posts/)
   # =====================================================================
   - name: posts
-    label: "Journal (Blog)"
+    label: "📰 Journal (Blog)"
     type: collection
     path: _posts
     filename:
