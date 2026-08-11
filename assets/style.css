@@ -82,6 +82,9 @@
      Nav 0.8 -> text-mid 5,3:1 (warm 4,6:1); Overlay 0.75 -> text-dark 8,7:1;
      dunkel: Nav 0.8 braucht helle Links (#e0d8c8 = 7,7:1, #999 fiele auf 3,8:1),
      Overlay 0.8 -> ecru 6,5:1. */
+  /* Gold-TEXT auf Vollflächen: #C9A84C hält auf hell nur 2,6:1 -> dunkles
+     Gold #7d621c (4,8:1 cream / 4,78:1 warm); [data-theme=dunkel] -> echtes Gold. */
+  --gold-text: #7d621c;
   --nav-bg: rgba(251, 250, 248, 0.8);
   --nav-border: rgba(201, 168, 76, 0.2);
   --nav-link-color: var(--text-mid);
@@ -126,6 +129,7 @@
   --page-bg: var(--dark);
   --page-text: #e0d8c8;
   --headline-color: #fff;
+  --gold-text: var(--gold);
   --nav-bg: rgba(13, 13, 13, 0.8);
   --nav-border: var(--dark-border);
   --nav-link-color: #e0d8c8;
@@ -158,7 +162,7 @@ body {
 }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
-:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -301,7 +305,7 @@ section { padding: var(--section-pad) 0; }
   font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.2em;
-  color: var(--gold);
+  color: var(--gold-text);
   margin-bottom: 12px;
   display: block;
 }
@@ -440,7 +444,7 @@ a.gbadge-chip:hover { background: rgba(10, 6, 2, 0.92); }
 .stat-item { padding: 18px 20px; border: 1px solid var(--cream-dark); border-radius: var(--radius-card); }
 .stat-icon { color: var(--gold); margin-bottom: 8px; }
 .stat-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; }
-.stat-value { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; color: var(--gold); line-height: 1; margin-bottom: 5px; }
+.stat-value { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; color: var(--gold-text); line-height: 1; margin-bottom: 5px; }
 .stat-label { font-size: 0.73rem; letter-spacing: 0.06em; color: var(--text-mid); }
 
 /* ===== FOOTER (immer dunkel, unabhaengig vom Seiten-Theme) ===== */
@@ -518,7 +522,7 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
 .kat-icon { width: 40px; height: 40px; margin-bottom: 20px; color: var(--gold); }
 .kat-card h2 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; margin-bottom: 10px; }
 .kat-card p { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 20px; line-height: 1.65; }
-.kat-link { font-size: 0.72rem; letter-spacing: 0.12em; font-weight: 500; color: var(--gold); }
+.kat-link { font-size: 0.72rem; letter-spacing: 0.12em; font-weight: 500; color: var(--gold-text); }
 .kat-link:hover { text-decoration: underline; }
 
 /* 3 gleich breite Spalten: Text | Foto | Kennzahlen-Grid - entspricht 1:1 dem Mockup
@@ -533,7 +537,7 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
 
 .galerie { background: var(--cream-dark); }
 .galerie-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; gap: 20px; }
-.galerie-link { font-size: 0.72rem; letter-spacing: 0.12em; font-weight: 500; color: var(--gold); white-space: nowrap; }
+.galerie-link { font-size: 0.72rem; letter-spacing: 0.12em; font-weight: 500; color: var(--gold-text); white-space: nowrap; }
 .galerie-link:hover { text-decoration: underline; }
 
 .cta-banner { background: var(--dark); text-align: center; }
@@ -679,7 +683,7 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
 }
 .projekt-thumb__info { padding: 12px 0 0; }
 .projekt-thumb__title { font-family: var(--font-serif); font-size: 0.9rem; font-weight: 600; color: var(--headline-color); line-height: 1.25; }
-.projekt-thumb__kat { font-size: 0.67rem; letter-spacing: 0.1em; color: var(--gold); margin-top: 3px; }
+.projekt-thumb__kat { font-size: 0.67rem; letter-spacing: 0.1em; color: var(--gold-text); margin-top: 3px; }
 
 /* Portfolio-Uebersicht (/portfolio/, page_type: portfolio-index) und generische Seiten
    (page_type: projekt/blog-index/post/Standard) — eigenes, ruhiges Layout, nutzt dieselben
@@ -687,9 +691,9 @@ footer { background: var(--dark-mid); color: var(--text-light); padding: clamp(6
 .projekt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
 .wrap { width: var(--container); margin: 0 auto; }
 .wrap--narrow { max-width: 680px; }
-.projekt-detail__badge { display: inline-block; color: var(--gold); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.75em; }
+.projekt-detail__badge { display: inline-block; color: var(--gold-text); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.75em; }
 .projekt-detail__beschreibung { margin-top: 1.5rem; color: var(--page-text); }
-.link-arrow { color: var(--gold); font-weight: 600; letter-spacing: 0.02em; }
+.link-arrow { color: var(--gold-text); font-weight: 600; letter-spacing: 0.02em; }
 .link-arrow:hover, .link-arrow:focus-visible { text-decoration: underline; }
 .post-list__item { margin-bottom: 2rem; }
 .post-list__date { color: var(--text-mid); font-size: 0.9rem; }
@@ -781,7 +785,7 @@ summary.faq-question {
 }
 summary.faq-question::-webkit-details-marker { display: none; }
 summary.faq-question:hover { background: var(--cream-dark); }
-details[open] summary.faq-question { background: var(--cream-dark); color: var(--gold); }
+details[open] summary.faq-question { background: var(--cream-dark); color: var(--gold-text); }
 .faq-chevron { width: 20px; height: 20px; flex-shrink: 0; color: var(--gold); transition: transform var(--transition); }
 details[open] .faq-chevron { transform: rotate(180deg); }
 .faq-answer { padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-mid); line-height: 1.75; }
