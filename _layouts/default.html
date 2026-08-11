@@ -803,14 +803,14 @@
       </div>
 
       <div class="footer-col">
-        <h4>NAVIGATION</h4>
+        <h2>NAVIGATION</h2>
         <ul>
           {% for item in header_nav %}<li><a href="{{ item.url | relative_url }}">{{ item.nav_label | escape }}</a></li>{% endfor %}
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>KONTAKT</h4>
+        <h2>KONTAKT</h2>
         <address>
           {% if f.ansprechpartner and f.ansprechpartner != "" %}{{ f.ansprechpartner | escape }}<br>{% endif %}
           {{ f.strasse | escape }}<br>
@@ -826,7 +826,7 @@
       {% endcomment %}
       {% if page.page_type == 'ueber-mich' and d.ausruestung.size > 0 %}
       <div class="footer-col">
-        <h4>MEINE AUSRÜSTUNG</h4>
+        <h2>MEINE AUSRÜSTUNG</h2>
         <ul>
           {% for item in d.ausruestung %}<li>{{ item | escape }}</li>{% endfor %}
         </ul>
@@ -834,7 +834,7 @@
       </div>
       {% else %}
       <div class="footer-col">
-        <h4>RECHTLICHES</h4>
+        <h2>RECHTLICHES</h2>
         <ul>
           {% for item in footer_nav %}<li><a href="{{ item.url | relative_url }}">{{ item.nav_label | escape }}</a></li>{% endfor %}
         </ul>
