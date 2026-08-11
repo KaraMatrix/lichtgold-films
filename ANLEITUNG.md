@@ -8,6 +8,8 @@ Hier bearbeiten Sie Ihre Website selbst — Texte, Bilder und Beiträge. Diese S
 2. **Ändern und speichern** — Text oder Bild anpassen, oben rechts auf **Save** klicken. Pflichtfelder sind mit ***Required** markiert und dürfen nicht leer bleiben.
 3. **Fertig** — die Website veröffentlicht sich automatisch in ca. 2 Minuten. Sie müssen nichts weiter tun.
 
+**Ihre Website ansehen:** [karamatrix.github.io/lichtgold-films](https://karamatrix.github.io/lichtgold-films/) — nach dem Speichern kurz warten, dann die Seite dort neu laden.
+
 ## So ist alles aufgebaut
 
 - **Allgemein** — Firmendaten, Kontakt, Social-Media-Links und Navigation.
