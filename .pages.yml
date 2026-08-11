@@ -930,7 +930,7 @@ content:
       template: "{year}-{month}-{day}-{fields.title}.md"
       field: false
     view:
-      fields: [title, date]
+      fields: [image, title, date]
       primary: title
       sort: [date, title]
       default:
