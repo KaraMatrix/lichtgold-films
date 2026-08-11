@@ -1,7 +1,5 @@
 ---
----
----
-
+published: false
 ---
 
 # Willkommen in Ihrem Redaktionssystem 👋
