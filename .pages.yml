@@ -112,6 +112,17 @@ content:
             pattern:
               regex: '^#[0-9A-Fa-f]{6}$'
               message: "Bitte als Hex-Code mit # und 6 Stellen angeben, z. B. #C9A84C"
+          - name: design_ecken
+            label: "Formensprache"
+            type: select
+            default: eckig
+            description: "Wirkt auf Karten, Bilder und Buttons der gesamten Website."
+            options:
+              values:
+                - name: eckig
+                  label: "Klassisch eckig"
+                - name: abgerundet
+                  label: "Sanft abgerundet"
           - name: google_bewertung_url
             label: "Link zu Google-Bewertungen (optional)"
             type: string
