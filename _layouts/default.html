@@ -41,7 +41,7 @@
     </a>
     <ul class="nav-links" role="list">
       {% for item in header_nav %}
-      <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active" aria-current="page"{% endif %}>{{ item.nav_label | escape | upcase }}</a></li>
+      <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active" aria-current="page"{% endif %}>{{ item.nav_label | upcase | escape }}</a></li>
       {% endfor %}
     </ul>
     <a href="{{ '/kontakt/' | relative_url }}" class="btn-nav">ANFRAGE STARTEN</a>
@@ -54,7 +54,7 @@
 <div id="nav-overlay" class="nav-overlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
   <ul class="nav-links" role="list">
     {% for item in header_nav %}
-    <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.nav_label | escape | upcase }}</a></li>
+    <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} class="active"{% endif %}>{{ item.nav_label | upcase | escape }}</a></li>
     {% endfor %}
   </ul>
   <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-filled">ANFRAGE STARTEN</a>
@@ -71,7 +71,7 @@
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-      <span class="eyebrow reveal">{{ d.hero.eyebrow | escape | upcase }}</span>
+      <span class="eyebrow reveal">{{ d.hero.eyebrow | upcase | escape }}</span>
       <h1 class="hero-headline reveal">{{ d.hero.headline | escape | newline_to_br }}</h1>
       <p class="hero-sub reveal">{{ d.hero.subline | escape }}</p>
       <div class="hero-btns reveal">
@@ -177,7 +177,7 @@
   <section class="page-hero" aria-label="Hochzeitsfilme Hero">
     <div class="page-hero-inner">
       <div class="reveal">
-        <span class="eyebrow">{{ d.hero.eyebrow | escape | upcase }}</span>
+        <span class="eyebrow">{{ d.hero.eyebrow | upcase | escape }}</span>
         <h1 class="page-hero-headline">{{ d.hero.headline | escape | newline_to_br }}</h1>
         <p class="page-hero-sub">{{ d.hero.subline | escape }}</p>
         <a href="#video-block" class="btn btn-outline">MEHR ERFAHREN →</a>
@@ -192,7 +192,7 @@
     <div class="container">
       <div class="feature-grid reveal">
         <div class="feature-text">
-          <span class="section-eyebrow">{{ d.feature.eyebrow | escape | upcase }}</span>
+          <span class="section-eyebrow">{{ d.feature.eyebrow | upcase | escape }}</span>
           <h2 class="section-headline">{{ d.feature.headline | escape }}</h2>
           <p>{{ d.feature.text | escape }}</p>
           <a href="{{ '/ueber-mich/' | relative_url }}" class="btn btn-outline">MEHR ÜBER UNS →</a>
@@ -267,7 +267,7 @@
     <div class="hero-bg"><img src="{{ d.hero.bild | relative_url }}" alt="" loading="eager" fetchpriority="high" width="1600" height="1000"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-      <span class="section-eyebrow reveal">{{ d.hero.eyebrow | escape | upcase }}</span>
+      <span class="section-eyebrow reveal">{{ d.hero.eyebrow | upcase | escape }}</span>
       <h1 class="hero-headline reveal">{{ d.hero.headline | escape | newline_to_br }}</h1>
       <p class="hero-sub reveal">{{ d.hero.subline | escape }}</p>
       <a href="#mehr" class="btn btn-outline reveal">MEHR ERFAHREN ↓</a>
@@ -278,7 +278,7 @@
     <div class="container">
       <div class="feature-grid reveal">
         <div class="feature-text">
-          <span class="feature-lead">{{ d.feature.lead | escape | upcase }}</span>
+          <span class="feature-lead">{{ d.feature.lead | upcase | escape }}</span>
           <h2 class="section-headline">{{ d.feature.headline | escape }}</h2>
           <p>{{ d.feature.text | escape }}</p>
           <a href="{{ '/ueber-mich/' | relative_url }}" class="btn btn-outline">MEHR ÜBER UNS</a>
@@ -358,7 +358,7 @@
     <div class="hero-bg"><img src="{{ d.hero.bild | relative_url }}" alt="" loading="eager" fetchpriority="high" width="1600" height="1000"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-      <span class="section-eyebrow reveal">{{ d.hero.eyebrow | escape | upcase }}</span>
+      <span class="section-eyebrow reveal">{{ d.hero.eyebrow | upcase | escape }}</span>
       <h1 class="hero-headline reveal">{{ d.hero.headline | escape | newline_to_br }}</h1>
       <p class="hero-sub reveal">{{ d.hero.subline | escape }}</p>
       <a href="#mehr" class="btn btn-outline reveal">MEHR ERFAHREN ↓</a>
@@ -369,7 +369,7 @@
     <div class="container">
       <div class="feature-grid reveal">
         <div class="feature-text">
-          <span class="feature-lead">{{ d.feature.lead | escape | upcase }}</span>
+          <span class="feature-lead">{{ d.feature.lead | upcase | escape }}</span>
           <h2 class="section-headline">{{ d.feature.headline | escape }}</h2>
           <p>{{ d.feature.text | escape }}</p>
           {% if d.feature.punkte.size > 0 %}
@@ -578,7 +578,7 @@
         {% if formular_endpoint != "" %}
         <div id="formular">
           <div class="formular-text">
-            <span class="section-eyebrow">{{ d.formular.eyebrow | escape | upcase }}</span>
+            <span class="section-eyebrow">{{ d.formular.eyebrow | upcase | escape }}</span>
             <h2 class="section-headline">{{ d.formular.headline | escape }}</h2>
           </div>
           <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.75;margin-bottom:28px;">{{ d.formular.text | escape }}</p>
@@ -845,9 +845,9 @@
 
     <div class="footer-bottom">
       {% if page.page_type == 'ueber-mich' %}
-      <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ f.name | escape | upcase }}{% for item in footer_nav %} | <a href="{{ item.url | relative_url }}">{{ item.nav_label | escape | upcase }}</a>{% endfor %}</p>
+      <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ f.name | upcase | escape }}{% for item in footer_nav %} | <a href="{{ item.url | relative_url }}">{{ item.nav_label | upcase | escape }}</a>{% endfor %}</p>
       {% else %}
-      <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ f.name | escape | upcase }} | ALLE RECHTE VORBEHALTEN</p>
+      <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ f.name | upcase | escape }} | ALLE RECHTE VORBEHALTEN</p>
       {% endif %}
     </div>
   </div>
