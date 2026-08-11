@@ -1,7 +1,7 @@
 title: "Lichtgold Films"
 description: "Hochzeitsfilme, Eventfilme und Commercials mit Herz, Ästhetik und einem Blick für das Wesentliche."
 lang: de
-url: ""
+url: "https://karamatrix.github.io" # beim Umzug auf lichtgoldfilms.de anpassen
 baseurl: "/lichtgold-films" # pro Kunde anpassen: "/<repo-name>", bei eigener Domain: ""
 
 collections:
