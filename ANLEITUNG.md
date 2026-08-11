@@ -19,6 +19,21 @@ Hier bearbeiten Sie Ihre Website selbst — Texte, Bilder und Beiträge. Diese S
 - **Journal (Blog)** — Neuigkeiten schreiben, erscheinen automatisch auf der Website.
 - **Media** — alle hochgeladenen Bilder an einem Ort.
 
+## Ihr Design — per Klick anpassbar
+
+Unter **Allgemein → Website-Einstellungen** bestimmen Sie das Erscheinungsbild. Jede Option ist geprüft — alles bleibt gut lesbar und sieht fertig aus:
+
+- **Formensprache** — alles klassisch eckig oder sanft abgerundet.
+- **Bildstimmung** — alle Fotos natürlich, warm getönt oder schwarzweiß.
+- **Seitenrhythmus** — luftige oder kompakte Abstände.
+- **Bewegung** — sanfte Einblendungen beim Scrollen an oder aus.
+
+Auf der **Startseite → Inhalte** zusätzlich:
+
+- **Headline-Anordnung** — Zeilen linksbündig oder elegant gestaffelt.
+- **Google-Badge** — Bewertung eintragen (z. B. 5,0), und im Startbereich erscheint ein Bewertungs-Siegel. Leer lassen = ausgeblendet.
+- **Trust-Badges** — bis zu 3 Siegel/Logos unten rechts im Startbereich.
+
 ## Gut zu wissen
 
 - **Bilder:** JPG oder PNG, ideal unter 500 KB — große Fotos vorher verkleinern, das hält die Website schnell.

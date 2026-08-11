@@ -362,6 +362,32 @@ section { padding: var(--section-pad) 0; }
   line-height: 1.7;
 }
 .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+/* Google-Badge unter den CTAs — Chip-Alpha 0.78: Weiß hält auch über der
+   hellsten Foto-Stelle (lum 0.75 -> Blend ~0.17 -> 4,8:1). Sterne dekorativ
+   (aria-hidden), die Information trägt der Text. */
+.hero-gbadge { margin-top: 18px; }
+.gbadge-chip {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 16px; border-radius: var(--radius-btn);
+  background: rgba(10, 6, 2, 0.78);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  color: #fff; font-size: 0.78rem; letter-spacing: 0.04em;
+}
+a.gbadge-chip:hover { background: rgba(10, 6, 2, 0.92); }
+.gbadge-sterne { color: var(--gold); letter-spacing: 2px; font-size: 0.85rem; }
+/* Trust-Badges unten rechts — helle Glas-Chips (Logos meist farbig), mobil aus */
+.hero-trustbadges {
+  position: absolute; right: clamp(20px, 4vw, 48px); bottom: clamp(20px, 4vw, 44px);
+  z-index: 2; display: flex; gap: 10px;
+}
+.trustbadge-chip {
+  display: flex; align-items: center; padding: 8px 12px;
+  border-radius: var(--radius-btn);
+  background: rgba(251, 250, 248, 0.85);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.trustbadge-chip img { height: 36px; width: auto; display: block; }
+@media (max-width: 900px) { .hero-trustbadges { display: none; } }
 /* Startseiten-Hero ist die groesste/prominenteste Variante */
 .pt-home .hero-content { max-width: 600px; }
 .pt-home .hero-headline { font-size: clamp(3rem, 7vw, 5.5rem); }

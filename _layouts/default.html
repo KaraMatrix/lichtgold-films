@@ -72,6 +72,13 @@
       <img src="{{ d.hero.bild | relative_url }}" alt="" loading="eager" fetchpriority="high" width="1600" height="1000">
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
+    {% if d.hero.trustbadges and d.hero.trustbadges.size > 0 %}
+    <div class="hero-trustbadges" aria-label="Auszeichnungen und Partner">
+      {% for tb in d.hero.trustbadges limit: 3 %}
+      <span class="trustbadge-chip"><img src="{{ tb.bild | relative_url }}" alt="{{ tb.beschriftung | escape }}" loading="lazy" height="36"></span>
+      {% endfor %}
+    </div>
+    {% endif %}
     <div class="hero-content">
       <span class="eyebrow reveal">{{ d.hero.eyebrow | upcase | escape }}</span>
       {%- comment -%} Initialen der ersten beiden Zeilen in Gold (L+G = Marken-Monogramm);
@@ -83,6 +90,13 @@
         <a href="#galerie" class="btn btn-outline-dark">PORTFOLIO ANSEHEN</a>
         <a href="{{ '/kontakt/' | relative_url }}" class="btn btn-filled">ANFRAGE SENDEN</a>
       </div>
+      {% if d.hero.google_rating and d.hero.google_rating != "" %}
+      {% capture gbadge_inhalt %}<span class="gbadge-sterne" aria-hidden="true">★★★★★</span><span>{{ d.hero.google_rating | escape }} auf Google{% if d.hero.google_anzahl and d.hero.google_anzahl != "" %} · {{ d.hero.google_anzahl | escape }} Bewertungen{% endif %}</span>{% endcapture %}
+      <div class="hero-gbadge reveal">
+        {% assign gurl = site.data.settings.google_bewertung_url %}
+        {% if gurl and gurl != "" %}<a class="gbadge-chip" href="{{ gurl }}" target="_blank" rel="noopener noreferrer">{{ gbadge_inhalt }}</a>{% else %}<span class="gbadge-chip">{{ gbadge_inhalt }}</span>{% endif %}
+      </div>
+      {% endif %}
     </div>
   </section>
 
