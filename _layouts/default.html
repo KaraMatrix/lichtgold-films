@@ -707,7 +707,7 @@
   {% assign alle_projekte = site.projekte | where_exp: "p", "p.published" | sort: "reihenfolge" %}
   <section class="section reveal">
     <div class="wrap">
-      <h1>{{ page.title }}</h1>
+      <h1>{{ page.title | escape }}</h1>
       {% if alle_projekte.size > 0 %}
       <div class="projekt-grid" style="margin-top:2rem;">
         {% for p in alle_projekte %}{% include projekt-card.html projekt=p %}{% endfor %}
@@ -728,9 +728,9 @@
   <section class="section reveal">
     <div class="wrap wrap--narrow">
       <p class="projekt-detail__badge">{{ kat }}</p>
-      <h1>{{ page.title }}</h1>
+      <h1>{{ page.title | escape }}</h1>
       {% include video.html url=page.video_url poster=page.vorschaubild title=page.title eager=true %}
-      <p class="projekt-detail__beschreibung">{{ page.beschreibung }}</p>
+      <p class="projekt-detail__beschreibung">{{ page.beschreibung | escape }}</p>
       <p><a class="link-arrow" href="{{ '/portfolio/' | relative_url }}">← Zurück zum Portfolio</a></p>
     </div>
   </section>
@@ -738,7 +738,7 @@
 {% when 'blog-index' %}
   <section class="section">
     <div class="wrap">
-      <h1>{{ page.title }}</h1>
+      <h1>{{ page.title | escape }}</h1>
       {% if site.posts.size > 0 %}
       <div class="post-list">
         {% for post in site.posts %}
@@ -758,7 +758,7 @@
 {% when 'post' %}
   <section class="section">
     <div class="wrap wrap--narrow">
-      <h1>{{ page.title }}</h1>
+      <h1>{{ page.title | escape }}</h1>
       <p class="post-list__date">{{ page.date | date: "%d.%m.%Y" }}</p>
       {{ content }}
     </div>
@@ -767,7 +767,7 @@
 {% else %}
   <section class="section">
     <div class="wrap wrap--narrow">
-      <h1>{{ page.title }}</h1>
+      <h1>{{ page.title | escape }}</h1>
       {{ content }}
     </div>
   </section>
@@ -826,7 +826,7 @@
       <div class="footer-col">
         <h4>MEINE AUSRÜSTUNG</h4>
         <ul>
-          {% for item in d.ausruestung %}<li>{{ item }}</li>{% endfor %}
+          {% for item in d.ausruestung %}<li>{{ item | escape }}</li>{% endfor %}
         </ul>
         <span class="footer-mehr-dazu">Mehr dazu →</span>
       </div>
