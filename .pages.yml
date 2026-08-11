@@ -272,6 +272,32 @@ content:
                     label: "Hero-Bild"
                     type: image
                     required: false
+                  - name: google_rating
+                    label: "Google-Bewertung (z. B. 5,0)"
+                    type: string
+                    required: false
+                    description: "Leer lassen, um das Google-Badge auszublenden. Der Link kommt aus Website-Einstellungen → Google-Bewertungen."
+                  - name: google_anzahl
+                    label: "Anzahl der Bewertungen (optional, z. B. 27)"
+                    type: string
+                    required: false
+                  - name: trustbadges
+                    label: "Trust-Badges (unten rechts im Hero, max. 3)"
+                    type: object
+                    list:
+                      max: 3
+                      collapsible:
+                        collapsed: true
+                        summary: "{beschriftung}"
+                    fields:
+                      - name: bild
+                        label: "Badge-Bild"
+                        type: image
+                        required: true
+                      - name: beschriftung
+                        label: "Beschriftung (für Vorlesefunktion/SEO)"
+                        type: string
+                        required: true
               - name: kategorien
                 label: "Leistungs-Kategorien (3 Karten)"
                 type: object
