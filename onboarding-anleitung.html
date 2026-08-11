@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ihre Website selbst bearbeiten — Kurzanleitung</title>
+<style>
+  :root {
+    --tinte: #1c2430;      /* Fließtext, ~13:1 auf Weiß */
+    --grau: #4d5866;       /* Nebentext, ~7:1 auf Weiß */
+    --akzent: #1a5faa;     /* Primärfarbe, ~5,7:1 auf Weiß */
+    --akzent-hell: #eaf1fa;
+    --linie: #dfe4ea;
+    --warn-bg: #fdf3e0;
+    --warn-rand: #8a5906;  /* 5,4:1 auf #fdf3e0 (rechnerisch geprüft) */
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--tinte);
+    background: #f0f2f5;
+    line-height: 1.45;
+  }
+  .blatt {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 24px auto;
+    background: #fff;
+    padding: 14mm 16mm;
+    box-shadow: 0 2px 18px rgba(0,0,0,.12);
+  }
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: #fff; }
+    .blatt { margin: 0; box-shadow: none; width: auto; min-height: auto; }
+  }
+
+  header { border-bottom: 3px solid var(--akzent); padding-bottom: 10px; margin-bottom: 18px; }
+  header h1 { font-size: 24px; letter-spacing: -.02em; }
+  header p { color: var(--grau); font-size: 13px; margin-top: 3px; }
+
+  h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--akzent); margin: 20px 0 10px;
+  }
+
+  /* 3 Schritte */
+  .schritte { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .schritt {
+    border: 1px solid var(--linie); border-radius: 10px; padding: 12px;
+  }
+  .schritt .nr {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--akzent); color: #fff; font-weight: 700; font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .schritt h3 { font-size: 14px; margin-bottom: 4px; }
+  .schritt p { font-size: 12px; color: var(--grau); }
+  .schritt strong { color: var(--tinte); }
+
+  /* Bereiche */
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--linie); vertical-align: top; }
+  td:first-child {
+    white-space: nowrap; font-weight: 600; width: 34%;
+    background: var(--akzent-hell); border-radius: 6px;
+  }
+  td:last-child { color: var(--grau); }
+
+  /* Hinweise */
+  .hinweise { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
+  .hinweis { display: flex; gap: 8px; font-size: 12px; align-items: flex-start; }
+  .hinweis .punkt { color: var(--akzent); font-weight: 700; line-height: 1.4; }
+  .hinweis p { color: var(--grau); }
+  .hinweis p strong { color: var(--tinte); }
+
+  .warnbox {
+    background: var(--warn-bg); border-left: 4px solid var(--warn-rand);
+    border-radius: 6px; padding: 10px 12px; font-size: 12px; margin-top: 14px;
+  }
+  .warnbox strong { color: var(--warn-rand); }
+
+  footer {
+    margin-top: 22px; padding-top: 10px; border-top: 1px solid var(--linie);
+    font-size: 12px; color: var(--grau); display: flex; justify-content: space-between;
+  }
+  footer .platzhalter { color: var(--akzent); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="blatt">
+
+  <header>
+    <h1>Ihre Website selbst bearbeiten</h1>
+    <p>Kurzanleitung für Ihr Redaktionssystem — Texte, Bilder und Beiträge ändern Sie in wenigen Minuten selbst.</p>
+  </header>
+
+  <h2>In drei Schritten zur Änderung</h2>
+  <div class="schritte">
+    <div class="schritt">
+      <span class="nr">1</span>
+      <h3>Anmelden</h3>
+      <p>Öffnen Sie den <strong>Einladungs-Link aus Ihrer E-Mail</strong>. Kein Passwort, kein Konto nötig — der Link meldet Sie direkt an. Lesezeichen setzen: <strong>app.pagescms.org</strong></p>
+    </div>
+    <div class="schritt">
+      <span class="nr">2</span>
+      <h3>Bearbeiten</h3>
+      <p>Links den Bereich wählen, Text oder Bild ändern, oben rechts auf <strong>Save</strong> klicken. Pflichtfelder sind mit <strong>* Required</strong> markiert und dürfen nicht leer bleiben.</p>
+    </div>
+    <div class="schritt">
+      <span class="nr">3</span>
+      <h3>Live gehen</h3>
+      <p>Nach dem Speichern veröffentlicht sich die Website <strong>automatisch in ca. 2 Minuten</strong> — weltweit. Sie müssen nichts weiter tun.</p>
+    </div>
+  </div>
+
+  <h2>So ist Ihr Redaktionssystem aufgebaut</h2>
+  <table>
+    <tr><td>Allgemein</td><td>Firmendaten, Kontakt, Social-Media-Links und Navigation — die Basisdaten Ihrer Website.</td></tr>
+    <tr><td>Seiten</td><td>Je Seite (Startseite, Hochzeiten, Events, Commercials, Über mich, Kontakt) zwei Einträge: <strong>Inhalte</strong> (Texte &amp; Bilder) und <strong>SEO &amp; Darstellung</strong> (Google-Beschreibung, Farbwelt).</td></tr>
+    <tr><td>Portfolio-Projekte</td><td>Ihre Referenzfilme — neue Projekte erscheinen automatisch in der passenden Kategorie.</td></tr>
+    <tr><td>Unterseiten</td><td>Impressum, Datenschutz und weitere Zusatzseiten.</td></tr>
+    <tr><td>Journal (Blog)</td><td>Neuigkeiten schreiben — neue Beiträge erscheinen automatisch auf der Website.</td></tr>
+    <tr><td>Media</td><td>Alle hochgeladenen Bilder an einem Ort.</td></tr>
+  </table>
+
+  <h2>Gut zu wissen</h2>
+  <div class="hinweise">
+    <div class="hinweis"><span class="punkt">→</span><p><strong>Bilder:</strong> JPG oder PNG verwenden, ideal unter 500&nbsp;KB — große Fotos vorher verkleinern, das hält die Website schnell.</p></div>
+    <div class="hinweis"><span class="punkt">→</span><p><strong>Listen mit fester Anzahl</strong> (z.&nbsp;B. „4 Kacheln"): Die Anzahl ist bewusst festgelegt, damit das Design stimmt.</p></div>
+    <div class="hinweis"><span class="punkt">→</span><p><strong>Eingeklappte Einträge:</strong> Auf einen Listeneintrag klicken, um ihn zu öffnen — „Expand all" öffnet alle auf einmal.</p></div>
+    <div class="hinweis"><span class="punkt">→</span><p><strong>Nichts kaputt zu machen:</strong> Jede Änderung wird versioniert und kann von uns jederzeit wiederhergestellt werden.</p></div>
+  </div>
+
+  <div class="warnbox">
+    <strong>Wichtig:</strong> Bearbeiten Sie die Website nur in <strong>einem</strong> Browser-Tab — und laden Sie die Seite neu (F5), wenn Sie sie länger offen hatten. So bearbeiten Sie immer den aktuellen Stand.
+  </div>
+
+  <footer>
+    <span>Fragen oder Wünsche? Wir helfen schnell und unkompliziert.</span>
+    <span class="platzhalter">[Ansprechpartner + E-Mail/Telefon eintragen]</span>
+  </footer>
+
+</div>
+</body>
+</html>
