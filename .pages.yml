@@ -162,6 +162,9 @@ content:
             label: "Link zu Google-Bewertungen (optional)"
             type: string
             required: false
+            pattern:
+              regex: '^$|^https://\S+$'
+              message: "Bitte die vollständige Adresse mit https:// angeben"
             description: "Vollständige Adresse mit https:// — leer lassen, um den Bewertungs-Button auszublenden."
           - name: karte_anzeigen
             label: "Karte auf der Kontaktseite anzeigen"
@@ -176,21 +179,33 @@ content:
             label: "Instagram-Link (optional)"
             type: string
             required: false
+            pattern:
+              regex: '^$|^https://\S+$'
+              message: "Bitte die vollständige Adresse mit https:// angeben"
             description: "Vollständige Adresse mit https://"
           - name: vimeo_url
             label: "Vimeo-Link (optional)"
             type: string
             required: false
+            pattern:
+              regex: '^$|^https://\S+$'
+              message: "Bitte die vollständige Adresse mit https:// angeben"
             description: "Vollständige Adresse mit https://"
           - name: youtube_url
             label: "YouTube-Link (optional)"
             type: string
             required: false
+            pattern:
+              regex: '^$|^https://\S+$'
+              message: "Bitte die vollständige Adresse mit https:// angeben"
             description: "Vollständige Adresse mit https://"
           - name: formular_endpoint
             label: "Formular-Endpoint (z. B. Formspree-URL)"
             type: string
             required: false
+            pattern:
+              regex: '^$|^https://\S+$'
+              message: "Bitte die vollständige Adresse mit https:// angeben"
             description: "Leer lassen, um das Kontaktformular auszublenden — die 'Andere Wege'-Spalte auf der Kontaktseite füllt dann die volle Breite."
 
       # --- Navigation (_data/navigation.yml) ---
@@ -210,6 +225,7 @@ content:
             label: "Ziel-URL"
             type: string
             required: true
+            description: "z. B. / oder /hochzeiten/ oder /aktuelles/"
           - name: nav_order
             label: "Reihenfolge"
             type: number
@@ -269,10 +285,6 @@ content:
                     label: "Subline"
                     type: text
                     required: true
-                  - name: video_url
-                    label: "Hero-Video (optional)"
-                    type: string
-                    required: false
                   - name: bild
                     label: "Hero-Bild"
                     type: image
@@ -449,6 +461,9 @@ content:
                     label: "Video (YouTube/Vimeo, optional)"
                     type: string
                     required: false
+                    pattern:
+                      regex: '^$|^https://\S+$'
+                      message: "Bitte die vollständige Adresse mit https:// angeben"
                   - name: bild
                     label: "Vorschaubild"
                     type: image
@@ -538,6 +553,9 @@ content:
                     label: "Video (YouTube/Vimeo, optional)"
                     type: string
                     required: false
+                    pattern:
+                      regex: '^$|^https://\S+$'
+                      message: "Bitte die vollständige Adresse mit https:// angeben"
                   - name: bild
                     label: "Vorschaubild"
                     type: image
@@ -637,6 +655,9 @@ content:
                     label: "Video (YouTube/Vimeo, optional)"
                     type: string
                     required: false
+                    pattern:
+                      regex: '^$|^https://\S+$'
+                      message: "Bitte die vollständige Adresse mit https:// angeben"
                   - name: bild
                     label: "Vorschaubild"
                     type: image
@@ -926,6 +947,9 @@ content:
         label: "Video-URL (optional)"
         type: string
         required: false
+        pattern:
+          regex: '^$|^https://\S+$'
+          message: "Bitte die vollständige Adresse mit https:// angeben"
         description: "YouTube- oder Vimeo-Link einfügen. Leer lassen, wenn (noch) kein Video vorliegt — es wird dann nur das Vorschaubild ohne Play-Symbol gezeigt."
       - name: vorschaubild
         label: "Vorschaubild"
