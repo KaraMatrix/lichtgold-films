@@ -1,0 +1,7 @@
+{%- comment -%}
+  Normalisiert Kunden-URLs aus dem CMS: fehlt das Schema („instagram.com/x"),
+  wird https:// vorangestellt — sonst würde der Browser den Wert als relativen
+  Pfad interpretieren und der Link bräche.
+{%- endcomment -%}
+{%- assign u = include.url | strip -%}
+{%- unless u contains '://' -%}https://{%- endunless -%}{{- u -}}
